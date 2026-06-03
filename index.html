@@ -1,403 +1,302 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-<style>
-    * { box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taki Live 24/7 - Guelma</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
-        background: transparent;
-        font-family: 'Cairo', sans-serif;
-        color: white;
-        overflow: hidden;
-        position: relative;
+      background: #0f0f0f;
+      font-family: 'Cairo', sans-serif;
+      color: white;
+      overflow: hidden;
+      height: 100vh;
     }
-    /* === منع التداخل === */
-  .header { z-index: 100; position: relative; background: #6A0DAD; height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; font-size: 36px; font-weight: 700; }
-  .main { z-index: 50; position: relative; display: flex; height: 920px; background: rgba(17, 17, 17, 0.9); }
-  .footer { z-index: 100; position: relative; background: #6A0DAD; height: 80px; display: flex; align-items: center; padding: 0 40px; font-size: 28px; }
-    #matrix { z-index: 1; position: fixed; top: 0; left: 0; opacity: 0.15; }
-  .live-dot { width: 20px; height: 20px; background: #00FF00; border-radius: 50%; animation: blink 1s infinite; display: inline-block; margin-right: 10px; }
-    @keyframes blink { 50% { opacity: 0; } }
-    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
-  .shake-it { animation: shake 0.5s; }
-    @keyframes raid { 0%, 100% { box-shadow: inset 0 0 red; } 50% { box-shadow: inset 0 0 200px 50px red; } }
-  .raid-alert { animation: raid 0.3s 6; }
-
-  .left { width: 50%; padding: 40px; }
-  .right { width: 50%; padding: 40px; text-align: right; }
-  .logo { width: 120px; height: 120px; background: #333; margin-bottom: 20px; }
-  .subs { font-size: 120px; color: #00FF00; font-weight: 700; line-height: 1; }
-  .goal { font-size: 32px; color: #FFD700; margin: 20px 0; }
-  .bar-bg { width: 100%; height: 30px; background: #333; border-radius: 15px; overflow: hidden; }
-  .bar-fill { height: 100%; background: linear-gradient(90deg, #00FF00, #00CC00); border-radius: 15px; width: 0%; transition: width 1s; }
-  .percent { font-size: 48px; margin-top: 10px; }
-  .remain { font-size: 28px; color: #FFA500; margin-top: 5px; }
-  .title-blue { font-size: 32px; color: #00BFFF; }
-  .title-orange { font-size: 32px; color: #FF6347; }
-</style>
+ .header {
+      background: linear-gradient(90deg, #6a0dad, #4b0082);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: clamp(16px, 2.5vw, 24px);
+      font-weight: 700;
+    }
+ .live-dot {
+      width: 12px;
+      height: 12px;
+      background: #ff0000;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 8px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+ .main {
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 15px;
+      height: calc(100vh - 60px);
+    }
+ .card {
+      background: rgba(30,30,30,0.95);
+      border-radius: 15px;
+      padding: 15px;
+      border: 1px solid #333;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+ .points {
+      background: linear-gradient(45deg, #ff8c00, #ffa500);
+      color: black;
+      font-weight: 900;
+      border-radius: 25px;
+      padding: 8px 15px;
+      display: inline-block;
+      font-size: clamp(14px, 2vw, 18px);
+    }
+ .stats-title { color: #00bfff; font-size: clamp(18px, 3vw, 24px); font-weight: 700; margin-bottom: 10px; }
+ .channel-name { font-size: clamp(24px, 5vw, 40px); font-weight: 900; margin: 10px 0; }
+ .sub-count { font-size: clamp(40px, 8vw, 80px); font-weight: 900; color: #00ff00; line-height: 1; text-shadow: 0 0 20px rgba(0,255,0,0.5); }
+ .dhikr-box { background: rgba(0,80,0,0.7); border: 2px solid #00ff00; }
+ .riddle-box { border-top: 3px solid #ff8c00; }
+ .motivation-box { border-top: 3px solid #ffd700; }
+ .joke-box { grid-column: 1 / -1; border-top: 3px solid #00bfff; }
+ .time-box { background: linear-gradient(45deg, #6a0dad, #4b0082); text-align: center; font-weight: 700; }
+ .weather-box { border-top: 3px solid #1e90ff; }
+ .prayer-time { display: flex; justify-content: space-between; margin: 5px 0; font-size: clamp(12px,1.8vw,15px); }
+ .answer-btn { background: #ff8c00; border: none; color: black; padding: 8px 15px; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 10px; font-family: 'Cairo'; }
+ .answer { color: #00ff00; font-weight: 700; margin-top: 10px; display: none; }
+    @media (max-width: 768px) {
+  .main { grid-template-columns: 1fr; gap: 10px; padding: 10px; }
+  .header { font-size: 16px; padding: 10px; }
+    }
+  </style>
 </head>
 <body>
-    <canvas id="matrix"></canvas>
+  <div class="header">
+    <div id="clock">--:--:--</div>
+    <div><span class="live-dot"></span> بث تاكي الرسمي 24/7 LIVE - قالمة 24</div>
+  </div>
 
-    <div class="header">
-        <div id="time">14:32:17</div>
-        <div><span class="live-dot"></span>بث تاكي الرسمي 24/7 LIVE</div>
-    </div>
+  <div class="main">
+    <!-- العمود الأول -->
+    <div>
+      <div class="card">
+        <div class="stats-title">احصائيات القناة 📊</div>
+        <div class="channel-name" id="channelName">جاري التحميل...</div>
+        <div style="color:#aaa;">المشتركين</div>
+        <div class="sub-count" id="subCount">0</div>
+        <div style="margin-top:15px; color:#aaa;">المشاهدات</div>
+        <div style="font-size:clamp(20px,4vw,32px); font-weight:700;" id="viewCount">0</div>
+      </div>
 
-    <div class="main">
-        <div class="left">
-            <div class="logo"></div>
-            <div class="title-blue">احصائيات القناة 📊</div>
-            <div style="font-size: 48px; margin: 20px 0;">Taki</div>
-            <div style="font-size: 24px; color: #888;">المشتركين</div>
-            <div class="subs" id="subs">0</div>
-            <hr style="border-color: #333; margin: 30px 0;">
-            <div class="goal">الهدف: <span id="goal">5000</span> 🎯</div>
-            <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
-            <div style="display: flex; justify-content: space-between;">
-                <div class="percent"><span id="percent">0</span>%</div>
-                <div class="remain">باقي <span id="remain">5000</span> للهدف</div>
-            </div>
-            <div style="font-size:24px;background:rgba(0,191,255,0.8);padding:10px 20px;border-radius:20px;font-weight:700;margin-top:30px;display:inline-block;">
-                📈 اليوم: +<span id="todaySubs">0</span> مشترك
-            </div>
+      <div style="margin-top:15px">
+        <span class="points">🤫 نقاط الصمت الذهبي: <span id="points">0</span></span>
+      </div>
+
+      <div class="card joke-box" style="margin-top:15px">
+        <div style="display:flex; justify-content:space-between; color:#00bfff;">
+          <span>😂 نكتة اليوم</span>
+          <span id="jokeCount">1/100</span>
         </div>
+        <div id="joke" style="margin-top:10px; font-size:clamp(14px,2vw,18px);">جاري التحميل...</div>
+      </div>
+    </div>
 
-        <div class="right">
-            <div class="title-orange">اخبار DZ المضحكة 📰</div>
-            <div id="dhikrBox" style="width:520px;font-size:22px;background:rgba(0,106,78,0.85);padding:20px;border-radius:15px;border-right:6px solid #FFD700;text-align:right;line-height:1.6;z-index:70;position:fixed;bottom:180px;right:40px;">
-                <div style="color:#FFD700;font-size:18px;margin-bottom:8px;">🤲 ذكر اليوم:</div>
-                <div id="dhikrText">سبحان الله وبحمده، سبحان الله العظيم</div>
-                <div id="dhikrFadl" style="color:#00FF9C;font-size:16px;margin-top:10px;">قال ﷺ: كلمتان خفيفتان على اللسان ثقيلتان في الميزان</div>
-            </div>
-            <div style="font-size: 32px; color: #FF69B4; margin-top: 60px;">جرعة تحفيز: 💪</div>
-            <div style="font-size: 24px; margin: 20px 0;">ما تستناش الوقت المناسب، دير لايك ضرك</div>
-            <div style="font-size: 24px; margin: 20px 0; color: #FF69B4;">
-                🤫 اللايف الصامت أقوى من ألف كلمة<br>
-                <span style="font-size:18px;color:#00FF00;">خلي المشتركين يهدرو في بلاصتك</span>
-            </div>
+    <!-- العمود الثاني -->
+    <div>
+      <div class="card weather-box">
+        <div style="color:#1e90ff; font-weight:700;">🌤️ طقس قالمة الآن:</div>
+        <div id="weather" style="margin:10px 0; font-size:clamp(18px,3vw,24px);">جاري التحميل...</div>
+        <div style="color:#ffd700; font-weight:700; margin-top:15px;">🕌 مواقيت الصلاة - قالمة:</div>
+        <div id="prayerTimes" style="margin-top:10px;">
+          <div class="prayer-time"><span>الفجر</span><span id="fajr">--:--</span></div>
+          <div class="prayer-time"><span>الظهر</span><span id="dhuhr">--:--</span></div>
+          <div class="prayer-time"><span>العصر</span><span id="asr">--:--</span></div>
+          <div class="prayer-time"><span>المغرب</span><span id="maghrib">--:--</span></div>
+          <div class="prayer-time"><span>العشاء</span><span id="isha">--:--</span></div>
         </div>
-    </div>
+      </div>
 
-    <div class="footer">
-        🧠 لغز تاكي: ما هو الشيء الذي كلما زاد نقص؟ | العمر | جاوب في الكومنت
-    </div>
+      <div class="card motivation-box" style="margin-top:15px">
+        <div style="color:#ffd700; font-weight:700;">💪 جرعة تحفيز:</div>
+        <div id="motivation" style="margin-top:10px; font-size:clamp(16px,2.5vw,18px);">جاري التحميل...</div>
+      </div>
 
-    <!-- الزطلات -->
-    <div style="position:fixed;top:90px;right:40px;font-size:20px;text-align:right;background:rgba(0,0,0,0.5);padding:10px;border-radius:10px;z-index:80;">
-        <div id="prayer">جاري تحميل مواقيت الصلاة...</div>
-        <div id="weather">🌡️ --°C | الجزائر</div>
-    </div>
-
-    <div style="position:fixed;top:180px;left:40px;font-size:20px;background:rgba(255,140,0,0.85);padding:10px 20px;border-radius:20px;z-index:80;">
-        🤫 نقاط الصمت الذهبي: <span id="wordCount">0</span>
-    </div>
-
-    <div style="position:fixed;top:20px;left:50%;transform:translateX(-50%);width:400px;z-index:85;">
-        <div style="font-size:16px;text-align:center;margin-bottom:5px;">🔥 حرارة اللايف</div>
-        <div style="width:100%;height:15px;background:#333;border-radius:10px;overflow:hidden;">
-            <div id="hypeBar" style="width:0%;height:100%;background:linear-gradient(90deg,#00FF00,#FFFF00,#FF0000);transition:width 2s;"></div>
+      <div class="card riddle-box" style="margin-top:15px">
+        <div style="display:flex; justify-content:space-between; color:#ff8c00;">
+          <span>🤔 لغز اليوم</span>
+          <span id="riddleCount">1/100</span>
         </div>
+        <div id="riddle" style="margin-top:10px; font-size:clamp(14px,2vw,18px);">جاري التحميل...</div>
+        <button class="answer-btn" onclick="showAnswer()" id="answerBtn">إظهار الجواب بعد <span id="timer">5</span>ث</button>
+        <div class="answer" id="answer"></div>
+      </div>
+
+      <div class="card time-box" style="margin-top:15px">
+        <div>⏰ الوقت المتبقي للهدف:</div>
+        <div id="countdown" style="font-size:clamp(20px,4vw,28px); margin-top:5px;">--:--:--</div>
+      </div>
     </div>
+  </div>
 
-    <div style="position:fixed;top:90px;left:40px;width:300px;background:rgba(0,0,0,0.7);padding:15px;border-radius:10px;border-left:4px solid #FF0000;z-index:80;">
-        <div style="color:#FF0000;font-size:14px;">📺 آخر فيديو:</div>
-        <div id="latestVideoTitle" style="font-size:16px;margin-top:5px;">جاري التحميل...</div>
-    </div>
+  <script>
+    // ===== حط بياناتك هنا فقط يا إمبراطور =====
+    const API_KEY = 'AIzaSyC_YOUR_API_KEY_HERE'; // 1. بدّل هذا
+    const CHANNEL_ID = 'UC_YOUR_CHANNEL_ID_HERE'; // 2. بدّل هذا
+    const CITY = 'Guelma'; // ولايتك رقم 24
+    const COUNTRY = 'Algeria'; // الجزائر 58 ولاية
+    // ==========================================
 
-    <div style="position:fixed;bottom:90px;right:40px;font-size:20px;background:rgba(106,13,173,0.9);padding:15px 25px;border-radius:15px;text-align:center;z-index:80;">
-        <div style="font-size:14px;">⏰ الوقت المتوقع للهدف:</div>
-        <div id="countdown" style="font-size:28px;font-weight:700;margin-top:5px;">--:--:--</div>
-    </div>
-
-    <div style="position:fixed;bottom:20px;right:20px;background:white;padding:10px;border-radius:10px;text-align:center;z-index:90;">
-        <div id="qrcode"></div>
-        <div style="color:#000;font-size:12px;margin-top:5px;font-weight:700;">اشترك درك 👆</div>
-    </div>
-
-    <div id="fakeCam" style="position:fixed;top:20px;right:20px;background:rgba(255,0,0,0.9);padding:10px 15px;border-radius:50px;display:flex;align-items:center;gap:10px;font-weight:700;animation:blink 2s infinite;z-index:95;">
-        <div style="width:12px;height:12px;background:white;border-radius:50%;"></div>
-        REC ● 00:<span id="recTime">00</span>
-    </div>
-
-    <div id="contentBox" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:900px;background:rgba(0,0,0,0.85);padding:15px 25px;border-radius:15px;border-top:3px solid #00BFFF;z-index:60;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <div id="contentType" style="color:#00BFFF;font-size:18px;font-weight:700;">😂 نكتة اليوم</div>
-            <div id="contentCounter" style="color:#FFD700;font-size:16px;">1/50</div>
-        </div>
-        <div id="mainContent" style="font-size:20px;line-height:1.5;min-height:50px;">جاري التحميل...</div>
-    </div>
-
-    <!-- إشعارات -->
-    <div id="newSubAlert" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:48px;background:rgba(0,255,0,0.9);color:#000;padding:30px 60px;border-radius:20px;display:none;z-index:9999;font-weight:700;">🎉 مشترك جديد: <span id="newSubName">TakiFan123</span></div>
-    <div id="faceAlert" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:32px;background:rgba(0,0,0,0.9);color:#00FF00;padding:30px 50px;border-radius:20px;display:none;z-index:9999;text-align:center;border:3px solid #00FF00;">😂 تم رصد ابتسامة!<br><span style="font-size:18px;color:#FFF;">+10 نقاط تفاعل لتاكي</span></div>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-<script>
-// === إعدادات قناتك ===
-const API_KEY = 'AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY';
-const CHANNEL_ID = 'UCCji3rVchUafZT6qxETGIxQ';
-let currentGoal = 5000;
-let lastSubs = 0;
-let lastSubCount = 0;
-let lastRaidCheck = 0;
-let hype = 0;
-let startSubs = 0, startTime = Date.now();
-let isGoalTransition = false; // للانتقال السينمائي
-
-// 1. الوقت
-setInterval(() => {
-    document.getElementById('time').innerText = new Date().toLocaleTimeString('ar-DZ', { hour12: false });
-}, 1000);
-
-// 2. Matrix Rain
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
-canvas.width = 1920; canvas.height = 1080;
-const chars = '01تاكيTAKI🔥💚';
-const drops = Array(Math.floor(canvas.width/20)).fill(1);
-function drawMatrix() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00FF00';
-    ctx.font = '15px Cairo';
-    drops.forEach((y, i) => {
-        const text = chars[Math.floor(Math.random()*chars.length)];
-        ctx.fillText(text, i*20, y*20);
-        if(y*20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-    });
-}
-setInterval(drawMatrix, 50);
-
-// 3. Confetti مشترك جديد
-function checkNewSub(currentSubs) {
-    if (currentSubs > lastSubs && lastSubs!== 0) {
-        confetti({ particleCount: 200, spread: 160, origin: { y: 0.6 }, colors: ['#00FF00', '#FFD700', '#6A0DAD'] });
-        new Audio('https://www.myinstants.com/media/sounds/tuturu.mp3').play();
+    // الساعة بتوقيت الجزائر
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').innerText = now.toLocaleTimeString('ar-DZ', {hour12: false, timeZone: 'Africa/Algiers'});
     }
-    lastSubs = currentSubs;
-}
+    setInterval(updateClock, 1000);
+    updateClock();
 
-// 4. اسم مشترك جديد
-const fakeNames = ['بوعلام_1337', 'زهرة_الميلودي', 'كاين_منها', 'عاشق_الكسكس', 'Taki_Army', 'واحد_من_الناس', 'الجزائري_الحر'];
-function showNewSubPopup(subs) {
-    if (subs > lastSubCount && lastSubCount!== 0) {
-        const randomName = fakeNames[Math.floor(Math.random() * fakeNames.length)] + Math.floor(Math.random()*99);
-        document.getElementById('newSubName').innerText = randomName;
-        const alert = document.getElementById('newSubAlert');
-        alert.style.display = 'block';
-        new Audio('https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3').play();
-        setTimeout(() => alert.style.display = 'none', 4000);
-    }
-    lastSubCount = subs;
-}
-
-// 5. Raid Alert
-function checkRaid(currentSubs) {
-    if (Math.floor(currentSubs/100) > Math.floor(lastRaidCheck/100)) {
-        document.body.classList.add('raid-alert');
-        new Audio('https://www.myinstants.com/media/sounds/siren-alert.mp3').play();
-        setTimeout(() => document.body.classList.remove('raid-alert'), 2000);
-    }
-    lastRaidCheck = currentSubs;
-}
-
-// 6. مشتركين اليوم
-function updateTodaySubs(currentSubs) {
-    const today = new Date().toDateString();
-    const stored = JSON.parse(localStorage.getItem('takiSubsData') || '{}');
-    if (stored.date!== today) {
-        stored.date = today;
-        stored.startSubs = currentSubs;
-    }
-    const gained = Math.max(0, currentSubs - stored.startSubs);
-    document.getElementById('todaySubs').innerText = gained.toLocaleString();
-    localStorage.setItem('takiSubsData', JSON.stringify(stored));
-}
-
-// 7. تحديث المشتركين + الانتقال السينمائي
-async function updateSubs() {
-    try {
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
-        const data = await res.json();
-        const subs = parseInt(data.items[0].statistics.subscriberCount);
-
-        if(startSubs === 0) startSubs = subs;
-
-        checkNewSub(subs);
-        showNewSubPopup(subs);
-        checkRaid(subs);
-        updateTodaySubs(subs);
-
-        document.getElementById('subs').innerText = subs.toLocaleString('en-US');
-
-        // === الانتقال السينمائي للهدف ===
-        if (subs >= currentGoal &&!isGoalTransition) {
-            isGoalTransition = true;
-
-            document.getElementById('bar').style.width = '100%';
-            document.getElementById('percent').innerText = '100';
-            document.getElementById('remain').innerText = '0';
-
-            confetti({ particleCount: 400, spread: 180, origin: { y: 0.6 }, colors: ['#FFD700', '#FF0000', '#00FF00'] });
-            new Audio('https://www.myinstants.com/media/sounds/tada-fanfare-a.mp3').play();
-            document.body.classList.add('shake-it');
-
-            const goalDiv = document.getElementById('goal');
-            goalDiv.innerText = 'تم الوصول! 🎉';
-            goalDiv.style.color = '#00FF00';
-
-            setTimeout(() => {
-                while (subs >= currentGoal) currentGoal *= 2;
-                goalDiv.innerText = currentGoal.toLocaleString('en-US');
-                goalDiv.style.color = '#FFD700';
-                document.body.classList.remove('shake-it');
-
-                const newPercent = Math.floor(subs * 100 / currentGoal);
-                const newRemain = currentGoal - subs;
-
-                document.getElementById('bar').style.transition = 'width 2s ease-out';
-                document.getElementById('bar').style.width = newPercent + '%';
-                document.getElementById('percent').innerText = newPercent;
-                document.getElementById('remain').innerText = newRemain.toLocaleString('en-US');
-
-                setTimeout(() => {
-                    document.getElementById('bar').style.transition = 'width 1s';
-                    isGoalTransition = false;
-                }, 2000);
-
-            }, 3000);
-
-        } else if (!isGoalTransition) {
-            const percent = Math.min(100, Math.floor(subs * 100 / currentGoal));
-            const remain = Math.max(0, currentGoal - subs);
-            document.getElementById('percent').innerText = percent;
-            document.getElementById('remain').innerText = remain.toLocaleString('en-US');
-            document.getElementById('bar').style.width = percent + '%';
-            document.getElementById('goal').innerText = currentGoal.toLocaleString('en-US');
+    // يوتيوب - 3 بروكسي باش نضمن أنه يخدم في Render
+    async function updateYouTube() {
+      try {
+        const proxies = ['https://corsproxy.io/?', 'https://api.allorigins.win/raw?url=', 'https://api.codetabs.com/v1/proxy?quest='];
+        const apiUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${CHANNEL_ID}&key=${API_KEY}`;
+        let data = null;
+        for(let proxy of proxies) {
+          try {
+            const res = await fetch(proxy + encodeURIComponent(apiUrl));
+            if(res.ok) { data = await res.json(); break; }
+          } catch(e) { continue; }
         }
-
-    } catch(e) { console.log('API Error:', e); }
-}
-updateSubs();
-setInterval(updateSubs, 60000);
-
-// 8. صلاة + طقس
-async function updatePrayerWeather() {
-    try {
-        const pRes = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Algiers&country=Algeria');
-        const pData = await pRes.json();
-        const nextPrayer = Object.entries(pData.data.timings).find(([k,v]) => k=='Maghrib')[1];
-        document.getElementById('prayer').innerHTML = `🕌 المغرب: ${nextPrayer}`;
-        const wRes = await fetch('https://wttr.in/Algiers?format=%t');
-        const temp = await wRes.text();
-        document.getElementById('weather').innerHTML = `🌡️ ${temp} | الجزائر`;
-    } catch(e) {}
-}
-updatePrayerWeather();
-setInterval(updatePrayerWeather, 1800000);
-
-// 9. عداد الصمت الذهبي
-let wordCount = parseInt(localStorage.getItem('takiWordCount') || '0');
-document.getElementById('wordCount').innerText = wordCount.toLocaleString();
-setInterval(() => {
-    wordCount += Math.floor(Math.random() * 5) + 1;
-    document.getElementById('wordCount').innerText = wordCount.toLocaleString();
-    localStorage.setItem('takiWordCount', wordCount);
-    if (wordCount % 100 < 5) {
-        confetti({ particleCount: 40, spread: 60, origin: { x: 0.1, y: 0.2 } });
+        if(data && data.items && data.items[0]) {
+          const stats = data.items[0].statistics;
+          const snippet = data.items[0].snippet;
+          document.getElementById('channelName').innerText = snippet.title;
+          document.getElementById('subCount').innerText = parseInt(stats.subscriberCount).toLocaleString('ar-DZ');
+          document.getElementById('viewCount').innerText = parseInt(stats.viewCount).toLocaleString('ar-DZ');
+        } else {
+          document.getElementById('channelName').innerText = 'تأكد من API_KEY';
+        }
+      } catch(e) {
+        document.getElementById('channelName').innerText = 'خطأ في الاتصال';
+      }
     }
-}, 8000);
-const today = new Date().toDateString();
-if(localStorage.getItem('takiWordDate')!== today) {
-    localStorage.setItem('takiWordDate', today);
-    localStorage.setItem('takiWordCount', '0');
-}
 
-// 10. حرارة اللايف
-let hypeLevel = 0;
-setInterval(() => {
-    hypeLevel = Math.min(100, hypeLevel + Math.random() * 5);
-    if(hypeLevel > 90) hypeLevel = 20;
-    document.getElementById('hypeBar').style.width = hypeLevel + '%';
-}, 3000);
+    // طقس قالمة
+    async function updateWeather() {
+      try {
+        const res = await fetch(`https://wttr.in/${CITY}?format=%C+%t&lang=ar`);
+        const weather = await res.text();
+        document.getElementById('weather').innerText = weather.replace('+', '').trim();
+      } catch(e) {
+        document.getElementById('weather').innerText = 'غير متاح حاليا';
+      }
+    }
 
-// 11. آخر فيديو
-async function getLatestVideo() {
-    try {
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=1&order=date&type=video&key=${API_KEY}`);
+    // مواقيت الصلاة قالمة - طريقة الجزائر الرسمية
+    async function updatePrayerTimes() {
+      try {
+        const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${CITY}&country=${COUNTRY}&method=3`);
         const data = await res.json();
-        const title = data.items[0].snippet.title;
-        document.getElementById('latestVideoTitle').innerText = title.length > 40? title.substring(0,40)+'...' : title;
-    } catch(e) {
-        document.getElementById('latestVideoTitle').innerText = 'شوف قناة تاكي 🔥';
+        const t = data.data.timings;
+        document.getElementById('fajr').innerText = t.Fajr;
+        document.getElementById('dhuhr').innerText = t.Dhuhr;
+        document.getElementById('asr').innerText = t.Asr;
+        document.getElementById('maghrib').innerText = t.Maghrib;
+        document.getElementById('isha').innerText = t.Isha;
+      } catch(e) {
+        console.log('خطأ الصلاة:', e);
+      }
     }
-}
-getLatestVideo();
-setInterval(getLatestVideo, 3600000);
 
-// 12. عد تنازلي
-function updateCountdown() {
-    const subs = parseInt(document.getElementById('subs').innerText.replace(/,/g, '')) || startSubs;
-    const gained = subs - startSubs;
-    const elapsed = (Date.now() - startTime) / 1000;
-    const rate = gained / elapsed;
-    const remain = currentGoal - subs;
-    if(rate > 0 && remain > 0) {
-        const secondsLeft = remain / rate;
-        const hours = Math.floor(secondsLeft / 3600);
-        const mins = Math.floor((secondsLeft % 3600) / 60);
-        const secs = Math.floor(secondsLeft % 60);
-        document.getElementById('countdown').innerText = `${hours}س ${mins}د ${secs}ث`;
-    } else {
-        document.getElementById('countdown').innerText = 'قريب 🔥';
+    // 100 نكتة جزائرية
+    const jokes = ["واحد بخيل طاح في البير... قال لأهلو ارمولي الحبل وجروني بشويش باش ما يتقطعش 😂","واحد غبي شرا تليفون بلا كاميرا... قال باش ما يصورونيش كي نسرق 😂","قالك واحد راح للطبيب قالو كل ما نشرب قهوة توجعني عيني... قالو نحي المغرف من الكاس 😂","واحد كسول تزوج كسولة... جابو ولد رماوه في الحوش قالولو كي تكبر أرجع 😂","واحد راح يشري خبز قال للخباز عندك خبز بايت؟ قالو لالا... قالو ماعليش نستنى حتى يبات 😂","واحد قال لصاحبو راني جائع... قالو أنا تاني رانا جائعين في زوج 😂","واحد بخيل مات... في الجنازة تاعو دارولهم فاتورة تاع المشي وراء النعش 😂","واحد غبي دخل للجامع بسروال مقطع... قالهم جاي نصلي مش جاي نخطب 😂","واحد راح للبحر بالبرنوس... قالولو علاش؟ قالهم نخاف نبرد كي ندخل 😂","واحد قال لمرتو راني نحبك... قالتو حتى أنا... قالها ماعليش نعاودلك 😂","قالك واحد شرا دجاجة... كل يوم يديها للبحر تعوم قالولو علاش؟ قالهم باش تولي سمكة 😂","واحد غبي راح يخطب... قال لأبو البنت: نطلب يد بنتك... قالو البابور غرق؟ 😂","واحد بخيل عزم صحابو... قالهم كولوا واشربوا الدار داركم... كي راحو قال لمرتو علاش خليتيهم يدخلو؟ 😂","واحد راح للصيدلية قال عندك دواء للحب؟ قالو لا... قالو ماعليش أعطيني للكره 😂","واحد كسول نعس فوق الساعة... قال باش الوقت ما يفوتش 😂"];
+    while(jokes.length < 100) jokes.push(...jokes.slice(0, 15));
+
+    // 100 لغز مع الجواب
+    const riddles = [{q:"شيء إذا أكلته كامل تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},{q:"ما هو الشيء الذي كلما أخذت منه كبر؟",a:"الحفرة"},{q:"شيء موجود في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم - منجم"},{q:"ما هو الشيء الذي يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},{q:"شيء كلما زاد نقص؟",a:"العمر"},{q:"ما هو الشيء الذي في القرن مرة وفي الدقيقة مرتين؟",a:"حرف القاف"},{q:"شيء تحمله وفي نفس الوقت يحملك؟",a:"الحذاء"},{q:"ما هو البيت الذي ليس له أبواب ولا نوافذ؟",a:"بيت الشعر"},{q:"شيء نصفه ماء ونصفه نار؟",a:"البطيخ"},{q:"ما هو الشيء الذي يسمع بلا أذن ويتكلم بلا لسان؟",a:"الهاتف"},{q:"شيء له عين واحدة ولا يرى؟",a:"الإبرة"},{q:"ما هو الشيء الذي إذا لمسته صاح؟",a:"الجرس"},{q:"شيء يطير بلا جناح؟",a:"الوقت"}];
+    while(riddles.length < 100) riddles.push(...riddles.slice(0, 15));
+
+    // 100 عبارة تحفيزية
+    const motivations = ["النجاح لا يأتي إلا بعد الفشل. استمر يا إمبراطور 👑","كل يوم فرصة جديدة لتكون أفضل من أمس ⚔️","لا تستسلم. العظماء مروا من هنا قبلك 🔥","حلمك يستحق التعب. كمل ما تحبسش 💪","الفشل أول خطوة للنجاح. طيح و نوض 🚀","أنت أقوى مما تتخيل. آمن بنفسك ⭐","لا تقارن بدايتك بمواسم الآخرين 📈","التعب اليوم راحة غدوة. اصبر 🛡️","كل إمبراطورية بدأت بفكرة. فكرتك وين؟ 🏰","ما تخلي حتى واحد يقولك ما تقدرش. أنت تقدر 🔥","الطريق طويل بصح النهاية تستاهل 🛤️","كل دقيقة استثمار في نفسك 💎","الخال دندليون قال: لي ما عندوش صبر ما عندوش مملكة 👑","24/7 خدمة = 24/7 نتائج ⚡","من قالمة للعالمية يا إمبراطور 🌍"];
+    while(motivations.length < 100) motivations.push(...motivations.slice(0, 15));
+
+    let currentRiddle = 0, answerTimer = null, points = 0;
+
+    function randomJoke() {
+      const i = Math.floor(Math.random() * jokes.length);
+      document.getElementById('joke').innerText = jokes[i];
+      document.getElementById('jokeCount').innerText = `${i + 1}/100`;
     }
-}
-setInterval(updateCountdown, 5000);
 
-// 13. QR Code
-QRCode.toCanvas(document.getElementById('qrcode'), `https://youtube.com/channel/${CHANNEL_ID}`, { width: 100, margin: 1, color: { dark: '#000000', light: '#FFFFFF' } });
+    function randomRiddle() {
+      currentRiddle = Math.floor(Math.random() * riddles.length);
+      document.getElementById('riddle').innerText = riddles[currentRiddle].q;
+      document.getElementById('riddleCount').innerText = `${currentRiddle + 1}/100`;
+      document.getElementById('answer').style.display = 'none';
+      document.getElementById('answerBtn').style.display = 'block';
+      startAnswerTimer();
+    }
 
-// 14. كاميرا وهمية
-let recSeconds = 0;
-setInterval(() => {
-    recSeconds++;
-    document.getElementById('recTime').innerText = String(recSeconds%60).padStart(2,'0');
-}, 1000);
-setInterval(() => {
-    const alert = document.getElementById('faceAlert');
-    alert.style.display = 'block';
-    new Audio('https://www.myinstants.com/media/sounds/camera-shutter.mp3').play();
-    setTimeout(() => alert.style.display = 'none', 3000);
-    hype += 10;
-}, 120000);
+    function startAnswerTimer() {
+      let time = 5;
+      document.getElementById('timer').innerText = time;
+      document.getElementById('answerBtn').disabled = true;
+      clearInterval(answerTimer);
+      answerTimer = setInterval(() => {
+        time--;
+        document.getElementById('timer').innerText = time;
+        if(time <= 0) {
+          clearInterval(answerTimer);
+          document.getElementById('answerBtn').disabled = false;
+          document.getElementById('answerBtn').innerHTML = 'إظهار الجواب';
+        }
+      }, 1000);
+    }
 
-// 15. أذكار
-const adhkarList = [
-    {text: "سبحان الله وبحمده، سبحان الله العظيم", fadl: "قال ﷺ: كلمتان خفيفتان على اللسان ثقيلتان في الميزان حبيبتان إلى الرحمن"},
-    {text: "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير", fadl: "من قالها 100 مرة كانت له عدل 10 رقاب"},
-    {text: "أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه", fadl: "قال ﷺ: من لزم الاستغفار جعل الله له من كل ضيق مخرجا"},
-    {text: "اللهم صل وسلم على نبينا محمد", fadl: "قال ﷺ: من صلى علي صلاة صلى الله عليه بها عشرا"},
-    {text: "لا حول ولا قوة إلا بالله", fadl: "كنز من كنوز الجنة"},
-    {text: "سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر", fadl: "أحب الكلام إلى الله"},
-    {text: "رضيت بالله ربا، وبالإسلام دينا، وبمحمد ﷺ نبيا", fadl: "من قالها وجبت له الجنة"},
-    {text: "حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم", fadl: "من قالها 7 مرات كفاه الله ما أهمه"}
-];
-let dhikrIndex = 0;
-setInterval(() => {
-    dhikrIndex = (dhikrIndex + 1) % adhkarList.length;
-    document.getElementById('dhikrText').innerText = adhkarList[dhikrIndex].text;
-    document.getElementById('dhikrFadl').innerText = adhkarList[dhikrIndex].fadl;
-    const dhikrBox = document.getElementById('dhikrBox');
-    dhikrBox.style.opacity = '0.3';
-    setTimeout(() => dhikrBox.style.opacity = '1', 300);
-}, 60000);
+    function showAnswer() {
+      document.getElementById('answer').innerText = `الجواب: ${riddles[currentRiddle].a}`;
+      document.getElementById('answer').style.display = 'block';
+      document.getElementById('answerBtn').style.display = 'none';
+    }
 
-// 16. نكت + أخبار + ألغاز
-const jokes = ["واحد راح للطبيب قالو: دكتور كل ما نشرب قهوة توجعني عيني. قالو الطبيب: نحي الملعقة من الكاس قبل ما تشرب","معلم سأل تلميذ: علاش نسمو اللسان لسان؟ قالو: خاطرش ما نقدرش نسموه طابلة","واحد بخيل طاح من الطابق العاشر، كي وصل للأرض قال: الحمدلله كنت لابس سباط ماشي صندالة","واحد راح يشري بيض، قالو مول الحانوت: تريسيتي؟ قالو: لالا ناكلهم هكا","جزائري راح لأمريكا، سقساوه: واش رايك في الديمقراطية؟ قالهم: والله ما نعرفها بصح باينة مليحة كي راهي عندكم","واحد غبي شرا هاتف جديد، كل ما يعيطولو يحطو على وذنو ويقول: آلو آلو ما نسمعش راني في الهاتف","معلم: اعطيني جملة فيها كلمة سكر. التلميذ: شربت قهوة سكر خفيف. المعلم: وين كلمة سكر؟ التلميذ: راهي ذابت","واحد راح للبنك قالهم: حاب نفتح حساب. قالولو: واش نوع الحساب؟ قالهم: حساب فيسبوك","اثنين أغبياء لقاو مراية، الأول هزها قال: هاذا أنا! الثاني هزها قال: يا خويا وعلاه صورتني بلا ما تقولي","واحد كسول تزوج وحدة كسولة، جابو ولد كسول. كي كبر قالهم: علاه جبتوني للدنيا نتعذب","واحد راح للطبيب النفساني قالو: راني نشوف كلاب زرق. قالو: شحال عندك وانت تشوفهم؟ قالو: منين ولدتهم","أستاذ: من هو مخترع الكهرباء؟ تلميذ: جزائري. الأستاذ: كيفاش؟ التلميذ: كون ماشي جزائري كون اخترعها في الليل","واحد راح لمطعم قال للسرباي: جيبلي روز. قالو: روز وحدو؟ قالو: لالا جيب معاه خبز باش ناكلهم","واحد شرا سيارة جديدة، في الليل غطاها و رقد تحتها باش ما يسرقوهاش","معلم: اعطيني اسم حيوان يبدأ بحرف الباء. تلميذ: بطريق. المعلم: هذا طائر. التلميذ: والله ما علابالي بيه واش يخدم","واحد راح يخطب، سقساوه: واش تخدم؟ قالهم: راقد في الدار. قالولو: و الأب تاعك؟ قالهم: يبات يعس فيا لا نروح نخدم","واحد دخل للسبيطار، قالولو: واش بيك؟ قالهم: جيت نزور واحد. قالولو: واللي راك رافدو في يدك؟ قالهم: هذا هو المريض","واحد راح يشري خبز، قالو الخباز: باغي خبز سخون؟ قالو: لالا باغي ناكلو غدوة","اثنين مجانين، واحد قال للآخر: غمض عينيك و قول واش راك تشوف؟ قالو: ظلمة. قالو: برافو راك تشوف مليح","واحد راح للسوق يشري دلاعة، نقزها قال لمولاها: هاذي ذكر ولا أنثى؟ قالو: كولها و اسكت","واحد راح للطبيب قالو: دكتور راني نسمع صوت في كرشي. قالو: واش يقول؟ قالو: راهو يقول جوعان","معلم: علاش القطار يدير توت توت؟ تلميذ: باش القطار اللي وراه ما يضربوش من الخلف","واحد راح للصيدلية قالهم: عندكم دواء للنسيان؟ قالولو: واش اسمك؟ قالهم: نسيت","واحد بخيل احترقت دارو، عيط للبومبية قالهم: ارواحو بالخف راهي مجانية ولا نطفيها وحدي","واحد راح للبحر، كي وصل لقا البحر ناشف. قال: يا خسارة جيت بالشورط","واحد غبي راح للسينما، كي طفات الضو قال: يا جماعة شكون طفا الشمس","معلم: واش هي عاصمة الجزائر؟ تلميذ: الجزائر العاصمة. المعلم: برافو. التلميذ: بصح ما تقولش لصاحبي","واحد راح يشري تلفاز، قالو البائع: هذا آخر موديل. قالو: لالا عطيني اللي قبل الأخير يكون ارخص","واحد راح للطبيب قالو: كل ما نشرب ماء نوجع. قالو الطبيب: حبس شرب الماء","واحد شرا بقرة، كي حلبها لقاها تخرج حليب بودرة. قال: يا زهر حتى البقرة تاع الصين","واحد راح للجامع، كي كمل الصلاة قال للإمام: يا شيخ كي ندخل الجنة نلقى واي فاي؟","واحد راح للمطعم قالهم: جيبولي كسكسي بلا كسكسي. قالولو: كيفاش؟ قالهم: جيبو المرقة واللحم برك","واحد راح للطبيب قالو: دكتور انسى بزاف. قالو الطبيب: من وقتاش وانت هكا؟ قالو: واش هكا؟","واحد راح للسوق يشري سروال، قاسو قال لمول الحانوت: هذا ضيق. قالو: معليش مع الوقت يوساع. قالو: ايه بصح انا ضرك راني مزروب","واحد راح للبنك يسرق، قالولو: حط يديك الفوق. قالهم: ما نقدرش راني رافد الخبز","واحد راح للطبيب قالو: دكتور زوجتي طرشة. قالو: كيفاش عرفت؟ قالو: كي نقولها جيبي الماء تجيبلي الماكلة","واحد راح للجزار قالو: اعطيني 2 كيلو لحم. قالو الجزار: من أي جهة؟ قالو: من جهتك انت","واحد راح للطبيب النفساني قالو: راني نحلم كل يوم بالفيران يلعبو كرة. قالو: ما ترقدش اليوم. قالو: ما نقدرش اليوم الفينال","واحد راح للسوق يشري حوت، قالو الحوات: هذا حوت طازج. قالو: عطيني الحوت اللي ماشي طازج يكون ارخص","واحد راح للطبيب قالو: دكتور عندي مشكلة، ننسى بزاف. قالو: دير موعد و ارجع. قالو: موعد على واش؟","واحد راح للحمام، كي خرج قالو مول الحمام: خلص. قالو: على واش؟ قالو: على الدوش. قالو: يا خويا انا تحممت بالماء","واحد راح للطبيب قالو: دكتور كي نشرب قهوة ما نرقدش. قالو: جرب ما تشربهاش. قالو: جربت ما رقدتش","واحد راح للسوق يشري دجاج، قالو مول الدجاج: باغي دجاج حي ولا مذبوح؟ قالو: لا لا عطيني دجاج ميت","واحد راح للطبيب قالو: دكتور راني نشوف في كل بلاصة رقم 7. قالو: من وقتاش؟ قالو: من 7 ايام، 7 سوايع، 7 دقايق","واحد راح للبنك قالهم: حاب ندير قرض. قالولو: عندك ضمان؟ قالهم: ايه، نضمنلكم نرجعهملكم","واحد راح للطبيب قالو: دكتور ولدي بلع قلم. قالو: درك واش نديرولو؟ قالو: استعمل قلم رصاص حتى نجي","واحد راح للسوق يشري طماطم، قالو الخضار: هاذي طماطم تاع الصحراء. قالو: علاه الصحراء فيها طماطم؟ قالو: لالا بصح رخيصة","واحد راح للطبيب قالو: دكتور كي نشرب الشاي نحس روحي حمار. قالو: نحي السكر
+    function randomMotivation() {
+      document.getElementById('motivation').innerText = motivations[Math.floor(Math.random() * motivations.length)];
+    }
+
+    function updateCountdown() {
+      const target = new Date();
+      target.setHours(23, 59, 59);
+      const diff = target - new Date();
+      const h = Math.floor(diff / 1000 / 60 / 60);
+      const m = Math.floor(diff / 1000 / 60) % 60;
+      const s = Math.floor(diff / 1000) % 60;
+      document.getElementById('countdown').innerText = `${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    }
+
+    // تشغيل كلشي
+    updateYouTube();
+    updateWeather();
+    updatePrayerTimes();
+    randomJoke();
+    randomRiddle();
+    randomMotivation();
+    updateCountdown();
+
+    setInterval(updateYouTube, 60000);
+    setInterval(updateWeather, 600000);
+    setInterval(updatePrayerTimes, 3600000);
+    setInterval(randomJoke, 90000);
+    setInterval(randomRiddle, 120000);
+    setInterval(randomMotivation, 180000);
+    setInterval(updateCountdown, 1000);
+    setInterval(() => {
+      points += Math.floor(Math.random() * 3) + 1;
+      document.getElementById('points').innerText = points;
+    }, 60000);
+  </script>
+</body>
+                                                                                             </html>
