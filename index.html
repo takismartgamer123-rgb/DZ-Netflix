@@ -1,472 +1,239 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Taki Live 24/7 - Guelma</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #0a0a0a;
-      font-family: 'Cairo', sans-serif;
-      color: white;
-      overflow-y: auto;
-      overflow-x: hidden;
-      width: 100%;
-      min-height: 100vh;
-    }
-    #particles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      opacity: 0.25;
-    }
-.header {
-      background: linear-gradient(90deg, #6a0dad, #4b0082);
-      padding: 8px 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: clamp(14px, 2vw, 24px);
-      font-weight: 900;
-      box-shadow: 0 4px 20px rgba(106,13,173,0.8);
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-.live-dot {
-      width: 12px; height: 12px;
-      background: #ff0000;
-      border-radius: 50%;
-      display: inline-block;
-      margin-left: 8px;
-      animation: blink 1s infinite;
-      box-shadow: 0 0 15px red;
-    }
-    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(1.3)} }
-.main {
-      padding: 10px;
-      display: grid;
-      gap: 10px;
-      padding-bottom: 70px;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
-    }
-    @media (max-aspect-ratio: 1/1) {
-.main {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto;
-      }
-.joke-box { grid-column: 1!important; }
-    }
-.card {
-      background: rgba(15,15,15,0.96);
-      border-radius: 15px;
-      padding: 15px;
-      border: 2px solid #333;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.7);
-      backdrop-filter: blur(15px);
-    }
-.stats-title { color: #00bfff; font-size: clamp(16px, 2.5vw, 26px); font-weight: 900; margin-bottom: 10px; text-align: center; }
-.channel-name { font-size: clamp(22px, 4vw, 40px); font-weight: 900; margin: 10px 0; text-align: center; text-shadow: 0 0 12px rgba(255,255,255,0.4); }
-.sub-count {
-      font-size: clamp(45px, 9vw, 90px);
-      font-weight: 900;
-      color: #00ff00;
-      line-height: 1;
-      text-align: center;
-      text-shadow: 0 0 40px rgba(0,255,0,1);
-      animation: countGlow 1.5s infinite alternate;
-    }
-    @keyframes countGlow { from { text-shadow: 0 0 25px rgba(0,255,0,0.6); } to { text-shadow: 0 0 50px rgba(0,255,0,1); } }
-.goal-container { margin-top: 15px; }
-.goal-text { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700; font-size: clamp(12px, 1.8vw, 16px); }
-.goal-bar {
-      width: 100%; height: 30px;
-      background: #111;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 3px solid #333;
-      position: relative;
-    }
-.goal-progress {
-      height: 100%;
-      background: linear-gradient(90deg, #00ff00, #00ff88, #00ff00);
-      background-size: 200% 100%;
-      border-radius: 20px;
-      width: 0%;
-      transition: width 1.5s ease-out;
-      box-shadow: 0 0 30px rgba(0,255,0,0.8);
-      animation: progressSlide 2s linear infinite;
-    }
-    @keyframes progressSlide { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-.goal-percent { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 900; font-size: 16px; color: black; text-shadow: 1px 1px 3px white; }
-.stat-row { display: flex; justify-content: space-around; margin-top: 15px; text-align: center; gap: 8px; }
-.mini-stat { background: rgba(0,0,0,0.5); padding: 10px; border-radius: 12px; border: 1px solid #333; flex: 1; }
-.mini-stat-value { font-size: clamp(18px, 2.5vw, 26px); font-weight: 900; color: #ffd700; }
-.mini-stat-label { font-size: clamp(10px, 1.3vw, 13px); color: #aaa; margin-top: 4px; }
-.dhikr-box { border-top: 4px solid #00ff00; }
-.dhikr-title { color: #00ff00; font-size: clamp(16px, 2.5vw, 24px); font-weight: 900; margin-bottom: 10px; }
-.dhikr-text { font-size: clamp(15px, 2vw, 20px); color: #fff; line-height: 1.6; text-align: center; }
-.dhikr-timer { color: #aaa; font-size: clamp(11px, 1.5vw, 14px); text-align: center; margin-top: 8px; }
-.news-box { background: rgba(40,40,40,0.95); border-top: 4px solid #ff6b00; }
-.news-title { color: #ff6b00; font-size: clamp(16px, 2.5vw, 24px); font-weight: 900; margin-bottom: 12px; }
-.news-item { background: rgba(0,0,0,0.5); padding: 12px; border-radius: 12px; font-size: clamp(14px, 1.8vw, 18px); line-height: 1.7; }
-.riddle-box { border-top: 4px solid #ff8c00; }
-.riddle-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.riddle-title { color: #ff8c00; font-size: clamp(16px, 2.5vw, 24px); font-weight: 900; }
-.riddle-timer {
-      background: #ff0000;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: 900;
-      font-size: clamp(14px, 2vw, 18px);
-      animation: timerPulse 1s infinite;
-    }
-    @keyframes timerPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-.riddle-text { font-size: clamp(15px, 2vw, 20px); margin: 10px 0; }
-.riddle-answer { color: #00ff00; font-weight: 900; margin-top: 10px; font-size: clamp(16px, 2.2vw, 22px); display: none; text-align: center; background: rgba(0,255,0,0.1); padding: 10px; border-radius: 10px; }
-.riddle-count { color: #aaa; font-size: clamp(11px, 1.5vw, 14px); text-align: left; }
-.joke-box { grid-column: 1 / -1; border-top: 4px solid #00bfff; }
-.joke-title { color: #00bfff; font-size: clamp(16px, 2.5vw, 24px); font-weight: 900; margin-bottom: 10px; }
-.joke-text { font-size: clamp(15px, 2vw, 20px); line-height: 1.6; }
-.goal-alert {
-      position: fixed;
-      top: 70px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(45deg, #ffd700, #ff8c00);
-      color: black;
-      padding: 12px 25px;
-      border-radius: 15px;
-      font-weight: 900;
-      font-size: clamp(16px, 2.5vw, 22px);
-      box-shadow: 0 0 40px rgba(255,215,0,0.9);
-      display: none;
-      z-index: 1000;
-      animation: alertBounce 0.5s;
-    }
-    @keyframes alertBounce { 0%{transform:translateX(-50%) scale(0)} 50%{transform:translateX(-50%) scale(1.1)} 100%{transform:translateX(-50%) scale(1)} }
-.footer-ticker {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(90deg, #6a0dad, #4b0082);
-      padding: 12px 15px;
-      font-size: clamp(14px, 2vw, 22px);
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      box-shadow: 0 -4px 25px rgba(106,13,173,0.8);
-      height: 50px;
-      z-index: 99;
-    }
-.ticker-content { display: inline-block; animation: scroll-left 20s linear infinite; }
-    @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.logo { width: 80px; height: 80px; border: 4px solid #FFD700; border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px rgba(255,215,0,0.6); background: #222; }
-.logo img { width: 100%; height: 100%; object-fit: cover; }
-.error-msg { color: #ff0000; text-align: center; font-weight: 700; background: rgba(255,0,0,0.2); padding: 15px; border-radius: 10px; border: 2px solid #ff0000; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ɪʈʂ ʈɑkɪ !! 🇩🇿²⁴ - بث مباشر 24/7</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#6a00ff;background:linear-gradient(135deg,#6a00ff 0%,#9d00ff 100%);font-family:'Cairo',sans-serif;color:#fff;min-height:100vh;padding:10px}
+.header{background:rgba(10,10,10,0.95);padding:15px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:900;border-radius:12px;margin-bottom:15px;backdrop-filter:blur(10px)}
+.header-title{font-size:18px}
+.live-dot{width:12px;height:12px;background:#ff0000;border-radius:50%;animation:blink 1s infinite;box-shadow:0 0 10px #ff0000;margin:0 10px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+#clock{font-size:18px}
+.main{max-width:1400px;margin:0 auto;padding-bottom:70px}
+.card{background:#0f0f0f;border:3px solid #1a1a1a;border-radius:18px;padding:22px;margin-bottom:15px;box-shadow:0 8px 25px rgba(0,0,0,.6)}
+.stats-card{border-color:#222}
+.zekr-card{border-top:5px solid #00ff88}
+.news-card{border-top:5px solid #ff8800}
+.riddle-card{border-top:5px solid #ff004f}
+.motivate-card{border-top:5px solid #00ccff}
+.card-title{font-size:22px;font-weight:900;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.big-number{font-size:55px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,.6);line-height:1;text-align:center}
+.goal-info{display:flex;justify-content:space-between;font-size:15px;margin:15px 0;font-weight:700}
+.progress-bar{background:#050505;height:38px;border-radius:20px;overflow:hidden;border:2px solid #1a1a1a}
+.progress-fill{background:linear-gradient(90deg,#00ff88,#00cc66);height:100%;transition:width.8s ease;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.stat-box{background:#050505;padding:15px;border-radius:12px;text-align:center;border:2px solid #1a1a1a}
+.stat-number{font-size:24px;font-weight:900;color:#ffcc00}
+.stat-label{font-size:12px;color:#888;margin-top:5px}
+.content-text{font-size:18px;line-height:1.9;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;font-weight:700;padding:10px}
+.news-inner{background:#050505;border-radius:12px;padding:18px;margin:5px 0;border:2px solid #1a1a1a}
+.riddle-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.timer-badge{background:#ff004f;padding:6px 15px;border-radius:25px;font-size:16px;font-weight:900;box-shadow:0 0 15px rgba(255,0,79,.6)}
+.answer-box{background:#0a4d2a;border:2px solid #00ff88;padding:15px;border-radius:12px;margin-top:15px;font-size:16px;color:#00ff88;display:none;animation:fadeIn.5s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.ticker{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,#6a00ff,#9d00ff);padding:12px 0;font-size:16px;font-weight:900;white-space:nowrap;overflow:hidden;height:50px;z-index:100;border-top:2px solid rgba(255,255,255,0.1)}
+.ticker-content{display:inline-block;animation:scroll 25s linear infinite;padding-right:100%}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.error-box{background:rgba(255,0,0,.2);border:3px solid #ff0000;padding:15px;border-radius:12px;text-align:center;font-size:14px;font-weight:700;display:none;line-height:1.6;margin-bottom:15px}
+@media(min-width:768px){
+body{padding:20px}
+.header{padding:20px 40px;border-radius:18px;margin-bottom:25px}
+.header-title{font-size:32px}
+#clock{font-size:32px}
+.live-dot{width:20px;height:20px}
+.main{padding:0 10px}
+.card{padding:30px;margin-bottom:25px;border-radius:22px}
+.card-title{font-size:30px;margin-bottom:20px}
+.big-number{font-size:85px}
+.goal-info{font-size:24px;margin:20px 0}
+.progress-bar{height:48px;border-radius:25px}
+.progress-fill{font-size:22px}
+.stats-grid{gap:18px;margin-top:22px}
+.stat-box{padding:22px;border-radius:15px}
+.stat-number{font-size:38px}
+.stat-label{font-size:16px}
+.content-text{font-size:28px;min-height:100px}
+.timer-badge{font-size:22px;padding:8px 20px}
+.answer-box{font-size:26px;padding:20px}
+.ticker{font-size:26px;height:60px}
+}
+</style>
 </head>
 <body>
-  <canvas id="particles"></canvas>
-  <div class="header">
-    <div id="clock">--:--:--</div>
-    <div><span class="live-dot"></span> بث تقي الرسمي 24/7 LIVE - قالمة 24</div>
-  </div>
-  <div class="goal-alert" id="goalAlert">🎉 وصلنا للهدف! 🎉</div>
-  <div class="main">
-    <div>
-      <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: start;">
-          <div class="logo"><img id="channelLogo" src=""></div>
-          <div style="flex: 1; margin-right: 15px;">
-            <div class="stats-title">احصائيات القناة 📊</div>
-            <div class="channel-name" id="channelName">جاري التحميل...</div>
-          </div>
-        </div>
-        <div style="color:#aaa; text-align:center; font-size:clamp(14px, 1.8vw, 18px);">المشتركين</div>
-        <div class="sub-count" id="subCount">0</div>
-        <div class="goal-container">
-          <div class="goal-text">
-            <span>الهدف: <span style="color:#ffd700;" id="goalTarget">5000</span> 🎯</span>
-            <span id="goalRemaining">باقي 5000</span>
-          </div>
-          <div class="goal-bar">
-            <div class="goal-progress" id="goalProgress"></div>
-            <div class="goal-percent" id="goalPercent">0%</div>
-          </div>
-        </div>
-        <div class="stat-row">
-          <div class="mini-stat">
-            <div class="mini-stat-value" id="liveViewers">0</div>
-            <div class="mini-stat-label">👁️ يشاهد</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-value" id="subRate">0/ساعة</div>
-            <div class="mini-stat-label">📈 النمو</div>
-          </div>
-          <div class="mini-stat">
-            <div class="mini-stat-value" id="totalViews">0</div>
-            <div class="mini-stat-label">👀 مشاهدات</div>
-          </div>
-        </div>
-      </div>
-      <div class="card dhikr-box" style="margin-top:10px;">
-        <div class="dhikr-title">🕌 ذكر اليوم</div>
-        <div class="dhikr-text" id="dhikrText">سبحان الله وبحمده</div>
-        <div class="dhikr-timer" id="dhikrTimer">يتغير كل 30 ثانية</div>
-      </div>
-    </div>
-    <div>
-      <div class="card news-box">
-        <div class="news-title">اخبار DZ المضحكة 📰</div>
-        <div class="news-item" id="newsText">جاري التحميل...</div>
-      </div>
-      <div class="card riddle-box" style="margin-top:10px;">
-        <div class="riddle-header">
-          <div class="riddle-title">🤔 لغز تقي</div>
-          <div class="riddle-timer" id="riddleTimer">3:00</div>
-        </div>
-        <div class="riddle-text" id="riddleText">جاري التحميل...</div>
-        <div class="riddle-answer" id="riddleAnswer"></div>
-        <div class="riddle-count" id="riddleCount">1/70</div>
-      </div>
-    </div>
-    <div class="card joke-box">
-      <div class="joke-title">😂 نكتة اليوم</div>
-      <div class="joke-text" id="jokeText">جاري التحميل...</div>
-    </div>
-  </div>
-  <div class="footer-ticker">
-    <div class="ticker-content">
-      🔴 بث مباشر 24/7 من قالمة | اشترك وفعل الجرس | تقي الإمبراطور 👑 | #قالمة24 #بث_مباشر
-    </div>
-  </div>
-  <script>
-    // =================== حط بياناتك هنا فقط يا إمبراطور ===================
-    const API_KEY = 'AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY'; // 1. بدّل هذا - مفتاحك من Google Cloud
-    const CHANNEL_ID = 'UCCji3rVchUafZT6qxETGIxQ'; // 2. بدّل هذا - UC... تاع قناتك
-    const VIDEO_ID = 'RIfFJbFqdLs'; // 3. بدّل هذا - ID البث المباشر لو عندك
-    let GOAL = 5000;
-    const GOAL_STEP = 5000;
-    // ====================================================================
+<div class="header">
+<div class="header-title">ɪʈʂ ʈɑkɪ !! 🇩🇿²⁴ - LIVE 24/7</div>
+<div style="display:flex;align-items:center">
+<div class="live-dot"></div>
+<div id="clock">00:00:00</div>
+</div>
+</div>
+<div class="main">
+<div class="card stats-card">
+<div class="card-title">📊 احصائيات القناة</div>
+<div id="errorBox" class="error-box"></div>
+<div style="text-align:center">
+<div style="font-size:14px;color:#888;margin-bottom:8px">المشتركين</div>
+<div id="subs" class="big-number">0</div>
+</div>
+<div class="goal-info">
+<div>باقي <span id="remaining">0</span></div>
+<div>🎯 الهدف: <span id="goal">0</span></div>
+</div>
+<div class="progress-bar"><div id="progress" class="progress-fill">0%</div></div>
+<div class="stats-grid">
+<div class="stat-box"><div id="views" class="stat-number">0</div><div class="stat-label">👀 مشاهدات</div></div>
+<div class="stat-box"><div id="growth" class="stat-number">0/ساعة</div><div class="stat-label">📈 النمو</div></div>
+<div class="stat-box"><div id="liveViewers" class="stat-number">0</div><div class="stat-label">👁️ يشاهد</div></div>
+</div>
+</div>
+<div class="card zekr-card">
+<div class="card-title" style="color:#00ff88">ذكر اليوم 🕌</div>
+<div id="zekr" class="content-text">سبحان الله وبحمده سبحان الله العظيم</div>
+<div style="text-align:center;color:#666;font-size:12px;margin-top:10px">يتغير كل 30 ثانية</div>
+</div>
+<div class="card news-card">
+<div class="card-title">📰 اخبار DZ المضحكة</div>
+<div class="news-inner">
+<div id="news" class="content-text">دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو</div>
+</div>
+</div>
+<div class="card riddle-card">
+<div class="riddle-header">
+<div class="card-title">لغز تقي 🤔</div>
+<div class="timer-badge" id="riddleTimer">3:00</div>
+</div>
+<div id="riddle" class="content-text">ابن أمك وأبيك وليس بأختك ولا أخيك؟</div>
+<div id="riddleAnswer" class="answer-box"></div>
+<div style="text-align:center;color:#666;font-size:12px;margin-top:10px"><span id="riddleCount">1</span>/70</div>
+</div>
+<div class="card motivate-card">
+<div class="card-title">💪 تحفيز اليوم</div>
+<div id="motivate" class="content-text">النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار</div>
+</div>
+</div>
+<div class="ticker">
+<div class="ticker-content">بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ !! 🇩🇿²⁴ 👑 | #بث_مباشر #تحدي | بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ !! 🇩🇿²⁴ 👑 |</div>
+</div>
+<script>
+const API_KEY='AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY';
+const CHANNEL_ID='UCCji3rVchUafZT6qxETGIxQ';
+const VIDEO_ID='RIfFJbFqdLs';
 
-    let currentSubs = 0, oldSubs = 0, subHistory = [];
-    let riddleTimerInterval, currentRiddleIndex = 0, riddleTimeLeft = 180;
+function getNextGoal(s){const g=[100,500,1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000];for(let x of g){if(s<x)return x}return Math.ceil(s/100000)*100000}
 
-    // فحص API_KEY
-    if(API_KEY === 'AIzaSyC_YOUR_API_KEY_HERE' ||!API_KEY.startsWith('AIza')) {
-      document.getElementById('channelName').innerHTML = '<div class="error-msg">⚠️ خطأ: بدّل API_KEY في السطر 195<br>و CHANNEL_ID في السطر 196</div>';
+const riddles=[{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},{q:"ما هو الشيء الذي كلما زاد نقص؟",a:"العمر"},{q:"شيء يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},{q:"شيء إذا أكلته كله تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},{q:"ما هو الشيء الذي في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم يصير منجم"},{q:"شيء له أوراق وليس نبات، له جلد وليس حيوان؟",a:"الكتاب"},{q:"ما هو الشيء الذي يقرصك ولا تراه؟",a:"الجوع"},{q:"شيء تحمله ويحملك؟",a:"الحذاء"},{q:"ما هو البيت الذي ليس فيه أبواب ولا نوافذ؟",a:"بيت الشعر"},{q:"شيء كلما أخذت منه كبر؟",a:"الحفرة"},{q:"ما هو الشيء الذي لا يمشي إلا بالضرب؟",a:"المسمار"},{q:"شيء يطير بلا جناح ويبكي بلا عيون؟",a:"الغيوم"},{q:"ما هو الشيء الذي له عين ولا يرى؟",a:"الإبرة"},{q:"شيء إذا وضعته في الثلاجة لا يبرد؟",a:"الفلفل الحار"},{q:"ما هو الشيء الذي اسمه على لونه؟",a:"البيض"},{q:"شيء موجود في كل بيت ويأكل ولا يشبع؟",a:"النار"},{q:"ما هو الشيء الذي يتكلم جميع اللغات؟",a:"الصدى"},{q:"شيء له رأس ولا عين له؟",a:"الدبوس"},{q:"ما هو الشيء الذي يذهب ولا يرجع؟",a:"الدخان"},{q:"شيء نراه في الدقيقة مرتين وفي القرن مرة واحدة؟",a:"حرف القاف"},{q:"ما هو الشيء الذي يشبه نصف القمر؟",a:"النصف الآخر"},{q:"شيء إذا لمسته صاح؟",a:"الجرس"},{q:"ما هو الشيء الذي يمشي ويقف وليس له أرجل؟",a:"الساعة"},{q:"شيء تذبحه وتبكي عليه؟",a:"البصل"},{q:"ما هو الشيء الذي له أربع أرجل ولا يمشي؟",a:"الكرسي"},{q:"شيء يملأ الغرفة ولا يشغل حيز؟",a:"النور"},{q:"ما هو الشيء الذي يكتب ولا يقرأ؟",a:"القلم"},{q:"شيء إذا دخل الماء ضاع وتشتت؟",a:"السكر"},{q:"ما هو الشيء الذي له خمس أصابع بلا لحم ولا عظم؟",a:"القفاز"}];
+
+const motivates=["النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار","ما تستناش الفرصة، اصنعها بيدك","كل يوم فرصة جديدة باه تبدا من جديد","الفشل خطوة للنجاح، ما تحبسهاش","احلم كبير واخدم أكبر","ما تقارنش روحك بالناس، قارن روحك بنفسك البارح","الصبر مفتاح الفرج والنجاح","خدمة اليوم راحة غدوة","ما كانش مستحيل، كاين ما حاولتش بزاف","الطريق طويل بصح النتيجة تستاهل","كون انت التغيير اللي حاب تشوفو","ما تخليش خوفك يقرر بلاصتك","كل عثرة تعلمك تمشي أحسن","النجاح يبدا كي تخرج من منطقة الراحة","ما تستسلمش، البداية دايما صعيبة","ثق في روحك حتى لو الناس ما ثاقوش","اليوم تخدم، غدوة تحصد","ما كاين حتى واحد ناجح ما طاحش قبل","ركز على هدفك وما تشوفش للخلف","العزيمة تصنع المعجزات","كون قوي، الحياة للضعاف ما ترحمش","كل ثانية تضيعها ما ترجعش","اخدم في صمت وخلي نجاحك يدير الضجة","ما تحكمش على نفسك من محاولة واحدة","الحلم بلا عمل مجرد وهم","الفرق بينك وبين الناجح هو الاستمرار","ما تخليش رأي الناس يحبسك","كون فخور بالمحاولات تاعك حتى لو فشلت","النجاح رحلة مش وجهة","كل يوم تتعب فيه راك تقرب لحلمك","ما تستناش الوقت المناسب، اصنعو","الفاشل يلقى أعذار، الناجح يلقى طريقة","تعلم من البارح، عيش اليوم، احلم بغدوة","ما تخافش تبدا من الصفر","النجاح ما يجيش للي يستناه، يجي للي يسعى ليه","كون سبب في نجاحك مش عذر في فشلك","ما تبيعش حلمك بثمن الراحة","كل خطوة صغيرة تقربك للهدف الكبير","ما تخلطش بين البطء والفشل","الناجحين كانوا مبتدئين في يوم من الأيام","اخدم كي واحد رابح، حتى لو راك خاسر","ما تخليش الماضي يسجن مستقبلك","كون انت البطل في قصة حياتك","النجاح يجي بعد التعب، مش قبلو","ما تقولش صعيب، قول ما حاولتش كفاية","كل ما طحت نوض أقوى","الوقت يمر، السؤال واش درت فيه","ما تستناش التشجيع، شجع روحك","الحياة تعطيك على قد ما تعطيها","النجاح قرار، ماشي صدفة","قالمة 24: من حمام دباغ للعالم 💪","ولاد قالمة ما يعرفوش المستحيل 🔥","قالمة تاريخ ومستقبل، وانت جزء منو","من جبال ماونة نوصلو للمليون 📈","قالمة 24: الرجلة والنية","قالمة ماشي غير ولاية، قالمة عقلية 🏆","قالمة تصنع الرجال والرجال يصنعو التاريخ","من قالمة نبداو و للعالمية نوصلو","ولاد قالمة وقت الشدة يبانو","قالمة 24 مش رقم، هي ولاية الرجال","اخدم اليوم باه تفتخر غدوة","ما تخليش الظروف تحكم فيك، انت احكم فيها","اللي يخاف من الفشل عمرو ما ينجح","كل مشكلة عندها حل، غير انت فتش عليه","ما تستناش الناس تشجعك، شجع روحك بروحك","النجاح يبدا من راسك قبل يديك","كون قد التحدي ولا انسحب بكري","ما تندمش على اللي فات، اخدم للجاي","الحياة قصيرة، ما تضيعهاش في الخوف","كون قدوة قبل ما تكون ناقد"];
+
+const news=["دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو","عاجل: واحد من قالمة دار بث 24/7... الجيران بلغو عليه قالو راهو يدير في مصنع مشتركين","كسر: مواطن قالمي وصل 1000 مشترك... دار عرس في الحومة","حصري: دراسة تثبت أن الجزائري يقدر يعيش بلا ماء بصح ما يقدرش يعيش بلا انترنت","عاجل: واحد نسى الباسوورد تاع الفيسبوك... دار حساب جديد ونسى الباسوورد ثاني","كسر: مواطن شاف فيديو 10 ساعات... كي كمل لقاه تكرر 3 مرات","حصري: جزائري اخترع طريقة جديدة للنجاح... يرقد ويحلم بالنجاح","عاجل: واحد دار دايت... نقص 2 كيلو و زاد 5 كيلو فرحة","كسر: مواطن شرا هاتف جديد... الصباح لقاه قديم","حصري: دراسة: الجزائري يقدر يهدر 5 ساعات في التيليفون على والو","عاجل: واحد ربح في المسابقة... الجائزة كانت مسابقة أخرى","كسر: مواطن فتح قناة يوتيوب... أول فيديو عنوانو: كيفاش نفتح قناة يوتيوب","حصري: دراسة: 99% من الجزائريين يقولو غدوة نبدا الريجيم","عاجل: واحد شرا لابتوب للألعاب... يستعملو باه يتفرج يوتيوب","كسر: مواطن دار بث مباشر... نسى الكاميرا طافية 3 سوايع"];
+
+const azkar=["سبحان الله وبحمده سبحان الله العظيم","لا إله إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير","استغفر الله العظيم واتوب اليه","لا حول ولا قوة الا بالله العلي العظيم","اللهم صل وسلم على نبينا محمد","سبحان الله والحمد لله ولا إله إلا الله والله أكبر","لا إله إلا أنت سبحانك إني كنت من الظالمين","حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم"];
+
+// 1. الساعة - مصلحة
+function updateClock(){
+  const now=new Date();
+  const time=now.toLocaleTimeString('en-GB',{timeZone:'Africa/Algiers',hour12:false});
+  document.getElementById('clock').textContent=time;
+}
+
+// 2. متغيرات اللغز
+let z=0,n=0,r=0,m=0,t=180,sa=false;
+let riddleInterval=null;
+
+// 3. تحديث المحتوى كل 30 ثانية
+function rot(){
+  document.getElementById('zekr').innerText=azkar[z%azkar.length];z++;
+  document.getElementById('news').innerText=news[n%news.length];n++;
+  document.getElementById('motivate').innerText=motivates[m%motivates.length];m++;
+}
+
+// 4. تحديث اللغز
+function updR(){
+  const c=riddles[r%riddles.length];
+  document.getElementById('riddle').innerText=c.q;
+  document.getElementById('riddleAnswer').style.display='none';
+  document.getElementById('riddleAnswer').innerText='الإجابة: '+c.a;
+  document.getElementById('riddleCount').innerText=(r%riddles.length)+1;
+  r++;t=180;sa=false;
+}
+
+// 5. مؤقت اللغز - مصلح
+function startRiddleTimer(){
+  if(riddleInterval) clearInterval(riddleInterval);
+  riddleInterval = setInterval(()=>{
+    t--;
+    const min=Math.floor(t/60);
+    const sec=t%60;
+    document.getElementById('riddleTimer').innerText=`${min}:${sec.toString().padStart(2,'0')}`;
+    if(t<=0&&!sa){
+      document.getElementById('riddleAnswer').style.display='block';
+      sa=true;
+      setTimeout(()=>{
+        updR();
+        t=180;
+      },10000);
     }
+  },1000);
+}
 
-    const adhkar = ["سبحان الله وبحمده سبحان الله العظيم","لا إله إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير","استغفر الله العظيم وأتوب إليه","اللهم صل وسلم على نبينا محمد","لا حول ولا قوة إلا بالله","حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم","اللهم إني أسألك العفو والعافية","رب اغفر لي ولوالدي","اللهم أعني على ذكرك وشكرك وحسن عبادتك","يا حي يا قيوم برحمتك أستغيث","اللهم آتنا في الدنيا حسنة وفي الآخرة حسنة","سبحان الله والحمد لله ولا إله إلا الله والله أكبر","أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم","اللهم إني أعوذ بك من الهم والحزن","رب اشرح لي صدري ويسر لي أمري","اللهم اهدني فيمن هديت","اللهم بارك لنا فيما رزقتنا","لا إله إلا أنت سبحانك إني كنت من الظالمين","اللهم اغفر للمسلمين والمسلمات","ربنا آتنا من لدنك رحمة","اللهم إني أسألك الجنة وأعوذ بك من النار","اللهم ثبتني بالقول الثابت","اللهم اجعلني من التوابين","رب زدني علما","اللهم إني أعوذ بك من علم لا ينفع","اللهم اجعل القرآن ربيع قلبي","ربنا لا تزغ قلوبنا بعد إذ هديتنا","اللهم استر عوراتي وآمن روعاتي","اللهم إني أسألك خير المسألة","اللهم اكفني بحلالك عن حرامك"];
-    while(adhkar.length < 70) adhkar.push(...adhkar.slice(0, 30));
-
-    const riddles = [{q:"شيء إذا أكلته كامل تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},{q:"ما هو الشيء الذي كلما أخذت منه كبر؟",a:"الحفرة"},{q:"شيء موجود في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم - منجم"},{q:"ما هو الشيء الذي يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},{q:"شيء كلما زاد نقص؟",a:"العمر"},{q:"ما هو الشيء الذي في القرن مرة وفي الدقيقة مرتين؟",a:"حرف القاف"},{q:"شيء تحمله وفي نفس الوقت يحملك؟",a:"الحذاء"},{q:"ما هو البيت الذي ليس له أبواب ولا نوافذ؟",a:"بيت الشعر"},{q:"شيء نصفه ماء ونصفه نار؟",a:"البطيخ"},{q:"ما هو الشيء الذي يسمع بلا أذن ويتكلم بلا لسان؟",a:"الهاتف"},{q:"شيء له عين واحدة ولا يرى؟",a:"الإبرة"},{q:"ما هو الشيء الذي إذا لمسته صاح؟",a:"الجرس"},{q:"شيء يطير بلا جناح؟",a:"الوقت"},{q:"ما هو الشيء الذي يكتب ولا يقرأ؟",a:"القلم"},{q:"شيء في السماء وليس في الماء؟",a:"حرف السين"},{q:"ما هو الشيء الذي كلما كثر غلا وكلما قل رخص؟",a:"العقل"},{q:"شيء له أوراق وليس له جذور؟",a:"الكتاب"},{q:"ما هو الشيء الذي يخترق الزجاج ولا يكسره؟",a:"الضوء"}];
-    while(riddles.length < 70) riddles.push(...riddles.slice(0, 20));
-
-    const jokes = ["واحد بخيل طاح في البير... قال لأهلو ارمولي الحبل وجروني بشويش باش ما يتقطعش 😂","واحد غبي شرا تليفون بلا كاميرا... قال باش ما يصورونيش كي نسرق 😂","قالك واحد راح للطبيب قالو كل ما نشرب قهوة توجعني عيني... قالو نحي المغرف من الكاس 😂","واحد كسول تزوج كسولة... جابو ولد رماوه في الحوش قالولو كي تكبر أرجع 😂","واحد راح يشري خبز قال للخباز عندك خبز بايت؟ قالو لالا... قالو ماعليش نستنى حتى يبات 😂","واحد قال لصاحبو راني جائع... قالو أنا تاني رانا جائعين في زوج 😂","واحد بخيل مات... في الجنازة تاعو دارولهم فاتورة تاع المشي وراء النعش 😂","واحد غبي دخل للجامع بسروال مقطع... قالهم جاي نصلي مش جاي نخطب 😂","واحد راح للبحر بالبرنوس... قالولو علاش؟ قالهم نخاف نبرد كي ندخل 😂","واحد قال لمرتو راني نحبك... قالتو حتى أنا... قالها ماعليش نعاودلك 😂","قالك واحد شرا دجاجة... كل يوم يديها للبحر تعوم قالولو علاش؟ قالهم باش تولي سمكة 😂","واحد غبي راح يخطب... قال لأبو البنت: نطلب يد بنتك... قالو البابور غرق؟ 😂","واحد بخيل عزم صحابو... قالهم كولوا واشربوا الدار داركم... كي راحو قال لمرتو علاش خليتيهم يدخلو؟ 😂","واحد راح للصيدلية قال عندك دواء للحب؟ قالو لا... قالو ماعليش أعطيني للكره 😂","واحد كسول نعس فوق الساعة... قال باش الوقت ما يفوتش 😂"];
-    while(jokes.length < 70) jokes.push(...jokes.slice(0, 15));
-
-    const dzNews = ["عاجل: مواطن لقى 50 دج في سروال قديم، راه يخمم يشري بيها قناة يوتيوب","دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو","مواطن من قالمة طلب 1 مليون مشترك في عيد ميلادو... قالولو أطلب حاجة معقولة 😂","عاجل: واحد دار بث 24/7... الجيران بلغو عليه قالو راهو يدير في مصنع مشتركين","دراسة: الضحك في بث تقي يحرق سعرات حرارية أكثر من الجيم 🏋️","عاجل: الإنترنت رجع في قالمة... المواطنين فرحانين قدرو يديرو كومنت","مواطن شاف 1234 مشترك... قال هاذي بداية الإمبراطورية 👑","خبر مفرح: سعر اللايك مازال باطل في الجزائر","دراسة: اللي يتفرج بث تقي ينقص عليه التوتر 99%","عاجل: واحد وصل 5000 مشترك... قال الحمد لله راني مليونير بالعملة الجزائرية"];
-    while(dzNews.length < 70) dzNews.push(...dzNews.slice(0, 10));
-
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    const particles = [];
-    for(let i = 0; i < 60; i++) particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4, radius: Math.random()*2});
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#6a0dad';
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
-        ctx.fill();
-        p.x += p.vx; p.y += p.vy;
-        if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-      });
-      requestAnimationFrame(drawParticles);
+let lastSubs=0;
+async function getSubs(){
+  try{
+    const r=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
+    const d=await r.json();
+    if(d.items&&d.items[0]){
+      const s=d.items[0].statistics;
+      const sub=parseInt(s.subscriberCount);
+      const v=parseInt(s.viewCount);
+      const g=getNextGoal(sub);
+      document.getElementById('subs').innerText=sub.toLocaleString('ar-DZ');
+      document.getElementById('views').innerText=v.toLocaleString('ar-DZ');
+      document.getElementById('goal').innerText=g.toLocaleString('ar-DZ');
+      document.getElementById('remaining').innerText=(g-sub).toLocaleString('ar-DZ');
+      const p=Math.min((sub/g)*100,100).toFixed(1);
+      document.getElementById('progress').style.width=p+'%';
+      document.getElementById('progress').innerText=p+'%';
+      if(lastSubs>0){document.getElementById('growth').innerText=((sub-lastSubs)*60).toLocaleString('ar-DZ')+'/ساعة'}
+      lastSubs=sub;
+      document.getElementById('errorBox').style.display='none';
     }
-    drawParticles();
+  }catch(e){
+    document.getElementById('errorBox').innerHTML='⚠️ فشل الاتصال - تأكد من API_KEY و CHANNEL_ID';
+    document.getElementById('errorBox').style.display='block';
+  }
+}
 
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').innerText = now.toLocaleTimeString('ar-DZ', {hour12: false, timeZone: 'Africa/Algiers'});
+async function getLiveViewers(){
+  try{
+    if(VIDEO_ID==='YOUR_LIVE_VIDEO_ID')return;
+    const r=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${VIDEO_ID}&key=${API_KEY}`);
+    const d=await r.json();
+    if(d.items&&d.items[0]?.liveStreamingDetails){
+      const v=d.items[0].liveStreamingDetails.concurrentViewers||0;
+      document.getElementById('liveViewers').innerText=parseInt(v).toLocaleString('ar-DZ');
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+  }catch(e){}
+}
 
-    async function updateYouTube() {
-      try {
-        if(!API_KEY || API_KEY === 'AIzaSyC_YOUR_API_KEY_HERE') {
-          document.getElementById('channelName').innerHTML = '<div class="error-msg">⚠️ بدّل API_KEY في السطر 195</div>';
-          return;
-        }
-        if(!CHANNEL_ID || CHANNEL_ID === 'UC_YOUR_CHANNEL_ID_HERE') {
-          document.getElementById('channelName').innerHTML = '<div class="error-msg">⚠️ بدّل CHANNEL_ID في السطر 196</div>';
-          return;
-        }
+// تشغيل كلشي كي تحمل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+  updateClock();
+  setInterval(updateClock, 1000);
 
-        const proxies = ['https://corsproxy.io/?', 'https://api.allorigins.win/raw?url=', 'https://api.codetabs.com/v1/proxy?quest='];
-        const apiUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${CHANNEL_ID}&key=${API_KEY}`;
+  getSubs();
+  setInterval(getSubs, 20000);
 
-        let data = null;
-        for(let proxy of proxies) {
-          try {
-            const res = await fetch(proxy + encodeURIComponent(apiUrl));
-            if(res.ok) { data = await res.json(); break; }
-          } catch(e) { continue; }
-        }
+  getLiveViewers();
+  setInterval(getLiveViewers, 30000);
 
-        if(!data ||!data.items ||!data.items[0]) {
-          throw new Error('فشل الاتصال - تأكد من API_KEY و CHANNEL_ID و فعل YouTube Data API v3');
-        }
+  rot();
+  setInterval(rot, 30000);
 
-        const stats = data.items[0].statistics;
-        const snippet = data.items[0].snippet;
-        oldSubs = currentSubs;
-        currentSubs = parseInt(stats.subscriberCount);
-
-        while(currentSubs >= GOAL) {
-          GOAL += GOAL_STEP;
-          launchConfetti();
-          showAlert(`🎉 وصلنا ${GOAL-GOAL_STEP}! الهدف الجديد: ${GOAL} 🎉`);
-        }
-
-        const percentToGoal = (currentSubs / GOAL) * 100;
-        if(percentToGoal >= 90 && percentToGoal < 100) {
-          showAlert(`🔥 باقي ${GOAL - currentSubs} مشترك فقط! 🔥`);
-        }
-
-        subHistory.push({time: Date.now(), subs: currentSubs});
-        if(subHistory.length > 10) subHistory.shift();
-        if(subHistory.length >= 2) {
-          const rate = Math.round((subHistory[subHistory.length-1].subs - subHistory[0].subs) / ((subHistory[subHistory.length-1].time - subHistory[0].time) / 3600000));
-          document.getElementById('subRate').innerText = `${rate}/ساعة`;
-        }
-
-        if(currentSubs > oldSubs && oldSubs > 0) {
-          new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZURE').play();
-        }
-
-        document.getElementById('channelName').innerText = snippet.title;
-        document.getElementById('channelLogo').src = snippet.thumbnails.high.url;
-        document.getElementById('totalViews').innerText = parseInt(stats.viewCount).toLocaleString('ar-DZ');
-        animateValue('subCount', oldSubs, currentSubs, 1000);
-
-        const percent = Math.min((currentSubs / GOAL) * 100, 100);
-        document.getElementById('goalProgress').style.width = percent + '%';
-        document.getElementById('goalPercent').innerText = Math.floor(percent) + '%';
-        document.getElementById('goalTarget').innerText = GOAL.toLocaleString('ar-DZ');
-        document.getElementById('goalRemaining').innerText = `باقي ${Math.max(GOAL - currentSubs, 0)}`;
-
-        if(VIDEO_ID && VIDEO_ID!== 'YOUR_LIVE_VIDEO_ID') {
-          const liveUrl = `https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${VIDEO_ID}&key=${API_KEY}`;
-          for(let proxy of proxies) {
-            try {
-              const res = await fetch(proxy + encodeURIComponent(liveUrl));
-              if(res.ok) {
-                const liveData = await res.json();
-                if(liveData.items && liveData.items[0]) {
-                  const viewers = liveData.items[0].liveStreamingDetails?.concurrentViewers || 0;
-                  document.getElementById('liveViewers').innerText = parseInt(viewers).toLocaleString('ar-DZ');
-                }
-                break;
-              }
-            } catch(e) { continue; }
-          }
-        }
-      } catch(e) {
-        console.log('خطأ:', e);
-        document.getElementById('channelName').innerHTML = `<div class="error-msg">⚠️ ${e.message}<br>1. تأكد من API_KEY<br>2. فعل YouTube Data API v3<br>3. تأكد من CHANNEL_ID</div>`;
-      }
-    }
-
-    function animateValue(id, start, end, duration) {
-      const obj = document.getElementById(id);
-      const range = end - start;
-      const startTime = Date.now();
-      const timer = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        obj.innerText = Math.floor(start + range * progress).toLocaleString('ar-DZ');
-        if(progress === 1) clearInterval(timer);
-      }, 16);
-    }
-
-    function showAlert(text) {
-      const alert = document.getElementById('goalAlert');
-      alert.innerText = text;
-      alert.style.display = 'block';
-      setTimeout(() => alert.style.display = 'none', 5000);
-    }
-
-    function launchConfetti() {
-      for(let i = 0; i < 150; i++) {
-        const conf = document.createElement('div');
-        conf.style.cssText = `position:fixed;top:-10px;left:${Math.random()*100}%;width:10px;height:10px;background:hsl(${Math.random()*360},100%,50%);z-index:9999;animation:fall ${Math.random()*3+2}s linear`;
-        document.body.appendChild(conf);
-        setTimeout(() => conf.remove(), 5000);
-      }
-    }
-
-    let dhikrIndex = 0;
-    function updateDhikr() {
-      document.getElementById('dhikrText').innerText = adhkar[dhikrIndex % adhkar.length];
-      dhikrIndex++;
-    }
-
-    function startRiddle() {
-      currentRiddleIndex = Math.floor(Math.random() * riddles.length);
-      const r = riddles[currentRiddleIndex];
-      document.getElementById('riddleText').innerText = r.q;
-      document.getElementById('riddleAnswer').style.display = 'none';
-      document.getElementById('riddleCount').innerText = `${currentRiddleIndex + 1}/70`;
-      riddleTimeLeft = 180;
-
-      clearInterval(riddleTimerInterval);
-      riddleTimerInterval = setInterval(() => {
-        riddleTimeLeft--;
-        const min = Math.floor(riddleTimeLeft / 60);
-        const sec = riddleTimeLeft % 60;
-        document.getElementById('riddleTimer').innerText = `${min}:${sec.toString().padStart(2,'0')}`;
-
-        if(riddleTimeLeft <= 0) {
-          clearInterval(riddleTimerInterval);
-          document.getElementById('riddleAnswer').innerText = `الجواب: ${r.a}`;
-          document.getElementById('riddleAnswer').style.display = 'block';
-          document.getElementById('riddleTimer').innerText = 'انتهى!';
-          setTimeout(startRiddle, 10000);
-        }
-      }, 1000);
-    }
-
-    let newsIndex = 0, jokeIndex = 0;
-    function rotateContent() {
-      document.getElementById('newsText').innerText = dzNews[newsIndex++ % dzNews.length];
-      document.getElementById('jokeText').innerText = jokes[jokeIndex++ % jokes.length];
-    }
-
-    updateYouTube();
-    updateDhikr();
-    startRiddle();
-    rotateContent();
-
-    setInterval(updateYouTube, 30000);
-    setInterval(updateDhikr, 30000);
-    setInterval(rotateContent, 15000);
-
-    const style = document.createElement('style');
-    style.textContent = '@keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }';
-    document.head.appendChild(style);
-  </script>
-</body>
-  </html>
+  updR();
+  startRiddleTimer();
+});
+</script>
