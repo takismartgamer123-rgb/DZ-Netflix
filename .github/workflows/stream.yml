@@ -1,4 +1,4 @@
-name: Guelma 24 Live Stream NUCLEAR v2
+name: Guelma 24 Live Stream NUCLEAR
 on:
   workflow_dispatch:
   schedule:
@@ -8,54 +8,42 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 355
     steps:
-      - name: 1. تنصيب كلشي
+      - name: Install Dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg xvfb curl fonts-noto fonts-noto-cjk fonts-dejavu-core fonts-liberation
+          sudo apt-get install -y ffmpeg xvfb curl fonts-noto
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
           sudo apt-get update -qq
           sudo apt-get install -y google-chrome-stable
 
-      - name: 2. تشغيل البث النووي
+      - name: Start Nuclear Stream
         env:
           STREAM_KEY: ${{ secrets.STREAM_KEY }}
-          OVERLAY_URL: 'https://dz-netflix.onrender.com/' # بدل هذا برابط موقعك
+          OVERLAY_URL: 'https://dz-netflix.onrender.com/' # بدل هذا برابطك
         run: |
           trap "kill 0" EXIT
+          (while true; do curl -s -L $OVERLAY_URL > /dev/null; sleep 300; done) &
           
-          # نفيقو الموقع كل 5 دقايق
-          (while true; do curl -s -o /dev/null -L $OVERLAY_URL; sleep 300; done) &
-          
-          # نشعلو الشاشة الوهمية
           export DISPLAY=:99
-          Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp -ac +extension GLX +extension RANDR &
+          Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +extension RANDR &
           sleep 3
           
-          # نشعلو Chrome المدرع
           google-chrome-stable \
-            --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --disable-extensions --disable-background-networking \
-            --disable-sync --disable-translate --disable-default-apps \
-            --disable-popup-blocking --disable-background-timer-throttling \
-            --disable-renderer-backgrounding --disable-backgrounding-occluded-windows \
-            --disable-features=TranslateUI,BackForwardCache \
-            --disable-ipc-flooding-protection --autoplay-policy=no-user-gesture-required \
+            --no-sandbox --disable-dev-shm-usage --disable-software-rasterizer \
+            --disable-extensions --disable-application-cache --disk-cache-dir=/dev/null \
             --no-first-run --no-default-browser-check --kiosk --incognito \
             --window-size=1920,1080 --window-position=0,0 \
-            --virtual-time-budget=20000 \
-            --run-all-compositor-stages-before-draw \
-            --hide-scrollbars \
-            --force-color-profile=srgb \
-            --font-render-hinting=none \
-            --disable-lcd-text \
-            --disable-system-font-check \
+            --disable-background-timer-throttling --disable-renderer-backgrounding \
+            --disable-backgrounding-occluded-windows --disable-features=TranslateUI \
+            --disable-ipc-flooding-protection --autoplay-policy=no-user-gesture-required \
+            --virtual-time-budget=20000 --run-all-compositor-stages-before-draw --hide-scrollbars \
+            --force-device-scale-factor=1 \
             --app=$OVERLAY_URL &
           
-          echo "نستناو 40 ثانية باه كلشي يتشارجا..."
+          echo "نستناو 40 ثانية باه Cairo و document.fonts.ready يكملو..."
           sleep 40
           
-          # نطلقو FFmpeg
           ffmpeg -hide_banner -loglevel error -stats \
             -thread_queue_size 8192 -f x11grab -video_size 1920x1080 -framerate 30 -draw_mouse 0 -i :99.0 \
             -thread_queue_size 8192 -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
