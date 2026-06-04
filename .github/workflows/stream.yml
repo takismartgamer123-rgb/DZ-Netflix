@@ -11,7 +11,7 @@ jobs:
       - name: 1. تنصيب كلشي
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg xvfb curl fonts-noto fonts-cairo fonts-liberation
+          sudo apt-get install -y ffmpeg xvfb curl fonts-noto fonts-noto-cjk fonts-dejavu-core fonts-liberation
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
           sudo apt-get update -qq
@@ -24,15 +24,15 @@ jobs:
         run: |
           trap "kill 0" EXIT
           
-          # نفيقو الموقع كل 5 دقايق باه ما يرقدش Render
-          (while true; do curl -s -o /dev/null $OVERLAY_URL; sleep 300; done) &
+          # نفيقو الموقع كل 5 دقايق
+          (while true; do curl -s -o /dev/null -L $OVERLAY_URL; sleep 300; done) &
           
           # نشعلو الشاشة الوهمية
           export DISPLAY=:99
           Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp -ac +extension GLX +extension RANDR &
           sleep 3
           
-          # نشعلو Chrome المدرع - هذي الفلاقز تخدم مع تعديل جيميناي
+          # نشعلو Chrome المدرع
           google-chrome-stable \
             --no-sandbox --disable-gpu --disable-dev-shm-usage \
             --disable-extensions --disable-background-networking \
@@ -52,11 +52,10 @@ jobs:
             --disable-system-font-check \
             --app=$OVERLAY_URL &
           
-          # نستناو 40 ثانية كاملة باه الكود تاع جيميناي يكمل document.fonts.ready + Repaint
           echo "نستناو 40 ثانية باه كلشي يتشارجا..."
           sleep 40
           
-          # نطلقو FFmpeg - ما يموتش
+          # نطلقو FFmpeg
           ffmpeg -hide_banner -loglevel error -stats \
             -thread_queue_size 8192 -f x11grab -video_size 1920x1080 -framerate 30 -draw_mouse 0 -i :99.0 \
             -thread_queue_size 8192 -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
