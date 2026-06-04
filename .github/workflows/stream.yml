@@ -1,0 +1,59 @@
+name: Guelma 24 Live Stream NUCLEAR
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 */5 * * *'
+
+jobs:
+  stream:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+
+    steps:
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg xvfb curl
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+          sudo apt-get update -qq
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Start Nuclear Stream
+        env:
+          STREAM_KEY: ${{ secrets.STREAM_KEY }}
+          OVERLAY_URL: 'https://dz-netflix.onrender.com/' # بدل هذا برابطك
+        run: |
+          # 1. نقتلو كلشي كي نخرجو
+          trap "kill 0" EXIT
+          
+          # 2. نفيقو موقع Render كل 10 دقايق
+          (while true; do curl -s $OVERLAY_URL > /dev/null; sleep 600; done) &
+          
+          # 3. نشعلو الشاشة الوهمية
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp -ac +extension RANDR &
+          sleep 3
+          
+          # 4. نشعلو Chrome المدرع
+          google-chrome-stable \
+          --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-software-rasterizer \
+          --disable-extensions --disable-application-cache --disk-cache-dir=/dev/null \
+          --no-first-run --no-default-browser-check --kiosk --incognito \
+          --window-size=1920,1080 --window-position=0,0 \
+          --disable-background-timer-throttling --disable-renderer-backgrounding \
+          --disable-backgrounding-occluded-windows --disable-features=TranslateUI \
+          --disable-ipc-flooding-protection --autoplay-policy=no-user-gesture-required \
+          --app=$OVERLAY_URL &
+          sleep 25
+          
+          # 5. نطلقو FFmpeg الانتحاري - ما يموتش
+          ffmpeg -hide_banner -loglevel fatal -nostats \
+          -thread_queue_size 4096 -f x11grab -video_size 1920x1080 -framerate 30 -draw_mouse 0 -i :99.0 \
+          -thread_queue_size 4096 -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+          -c:v libx264 -preset veryfast -tune zerolatency -b:v 4500k -maxrate 4500k -bufsize 9000k -pix_fmt yuv420p -g 60 -r 30 \
+          -c:a aac -b:a 128k -ar 44100 \
+          -max_muxing_queue_size 2048 \
+          -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 \
+          -f flv "rtmp://a.rtmp.youtube.com/live2/${STREAM_KEY}"
