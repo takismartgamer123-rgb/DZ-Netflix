@@ -2,62 +2,82 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taki Live 24/7 - Guelma</title>
+<meta name="viewport" content="width=1920, initial-scale=1.0">
+<title>ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ - بث مباشر 24/7</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
-* { margin:0; padding:0; box-sizing:border-box; }
-
-/* 1. تثبيت الأبعاد بالسيف 1920x1080 مع إخفاء الزوائد */
-html, body {
-    width: 1920px !important;
-    height: 1080px !important;
-    overflow: hidden !important;
-    background: #6a00ff;
-    background: linear-gradient(135deg,#6a00ff 0%,#9d00ff 100%);
-    font-family: 'Cairo', sans-serif;
-    color: #fff;
-    padding: 20px;
-    opacity: 0.99; /* 4. خدعة Repaint */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+    width:1920px!important;
+    height:1080px!important;
+    overflow:hidden!important;
+    background:#6a00ff;
+    background:linear-gradient(135deg,#6a00ff 0%,#9d00ff 100%);
+    font-family:'Cairo',sans-serif;
+    color:#fff;
+    min-height:1080px!important;
+    padding:10px;
+    transform:translateZ(0);
+    will-change:transform;
 }
-
-/* دمجت تنسيقات الشاشة الكبيرة مباشرة لأن البث دايما 1080p */
-.header { background:rgba(10,10,10,0.95); padding:20px 40px; display:flex; justify-content:space-between; align-items:center; font-weight:900; border-radius:18px; margin-bottom:25px; backdrop-filter:blur(10px); }
-.header-title { font-size:32px; }
-.live-dot { width:20px; height:20px; background:#ff0000; border-radius:50%; animation:blink 1s infinite; box-shadow:0 0 10px #ff0000; margin:0 10px; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-#clock { font-size:32px; }
-.main { max-width:1400px; margin:0 auto; padding:0 10px; padding-bottom:70px; }
-.card { background:#0f0f0f; border:3px solid #1a1a1a; border-radius:22px; padding:30px; margin-bottom:25px; box-shadow:0 8px 25px rgba(0,0,0,.6); }
-.stats-card { border-color:#222; }
-.zekr-card { border-top:5px solid #00ff88; }
-.news-card { border-top:5px solid #ff8800; }
-.riddle-card { border-top:5px solid #ff004f; }
-.motivate-card { border-top:5px solid #00ccff; }
-.card-title { font-size:30px; font-weight:900; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
-.big-number { font-size:85px; font-weight:900; color:#00ff88; text-shadow:0 0 20px rgba(0,255,136,.6); line-height:1; text-align:center; }
-.goal-info { display:flex; justify-content:space-between; font-size:24px; margin:20px 0; font-weight:700; }
-.progress-bar { background:#050505; height:48px; border-radius:25px; overflow:hidden; border:2px solid #1a1a1a; }
-.progress-fill { background:linear-gradient(90deg,#00ff88,#00cc66); height:100%; transition:width .8s ease; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:22px; color:#000; }
-.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:22px; }
-.stat-box { background:#050505; padding:22px; border-radius:15px; text-align:center; border:2px solid #1a1a1a; }
-.stat-number { font-size:38px; font-weight:900; color:#ffcc00; }
-.stat-label { font-size:16px; color:#888; margin-top:5px; }
-.content-text { font-size:28px; line-height:1.9; text-align:center; min-height:100px; display:flex; align-items:center; justify-content:center; font-weight:700; padding:10px; }
-.news-inner { background:#050505; border-radius:12px; padding:18px; margin:5px 0; border:2px solid #1a1a1a; }
-.riddle-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; }
-.timer-badge { background:#ff004f; padding:8px 20px; border-radius:25px; font-size:22px; font-weight:900; box-shadow:0 0 15px rgba(255,0,79,.6); }
-.answer-box { background:#0a4d2a; border:2px solid #00ff88; padding:20px; border-radius:12px; margin-top:15px; font-size:26px; color:#00ff88; display:none; animation:fadeIn .5s; }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-.ticker { position:fixed; bottom:0; left:0; right:0; background:linear-gradient(90deg,#6a00ff,#9d00ff); padding:12px 0; font-size:26px; font-weight:900; white-space:nowrap; overflow:hidden; height:60px; z-index:100; border-top:2px solid rgba(255,255,255,0.1); }
-.ticker-content { display:inline-block; animation:scroll 25s linear infinite; padding-right:100%; }
-@keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
-.error-box { background:rgba(255,0,0,.2); border:3px solid #ff0000; padding:15px; border-radius:12px; text-align:center; font-size:16px; font-weight:700; display:none; line-height:1.6; margin-bottom:15px; }
+.header{background:rgba(10,10,10,0.95);padding:15px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:900;border-radius:12px;margin-bottom:15px;backdrop-filter:blur(10px)}
+.header-title{font-size:18px}
+.live-dot{width:12px;height:12px;background:#ff0000;border-radius:50%;animation:blink 1s infinite;box-shadow:0 0 10px #ff0000;margin:0 10px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+#clock{font-size:18px}
+.main{max-width:1400px;margin:0 auto;padding-bottom:70px}
+.card{background:#0f0f0f;border:3px solid #1a1a1a;border-radius:18px;padding:22px;margin-bottom:15px;box-shadow:0 8px 25px rgba(0,0,0,.6)}
+.stats-card{border-color:#222}
+.zekr-card{border-top:5px solid #00ff88}
+.news-card{border-top:5px solid #ff8800}
+.riddle-card{border-top:5px solid #ff004f}
+.motivate-card{border-top:5px solid #00ccff}
+.card-title{font-size:22px;font-weight:900;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.big-number{font-size:55px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,.6);line-height:1;text-align:center}
+.goal-info{display:flex;justify-content:space-between;font-size:15px;margin:15px 0;font-weight:700}
+.progress-bar{background:#050505;height:38px;border-radius:20px;overflow:hidden;border:2px solid #1a1a1a}
+.progress-fill{background:linear-gradient(90deg,#00ff88,#00cc66);height:100%;transition:width.8s ease;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.stat-box{background:#050505;padding:15px;border-radius:12px;text-align:center;border:2px solid #1a1a1a}
+.stat-number{font-size:24px;font-weight:900;color:#ffcc00}
+.stat-label{font-size:12px;color:#888;margin-top:5px}
+.content-text{font-size:18px;line-height:1.9;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;font-weight:700;padding:10px}
+.news-inner{background:#050505;border-radius:12px;padding:18px;margin:5px 0;border:2px solid #1a1a1a}
+.riddle-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.timer-badge{background:#ff004f;padding:6px 15px;border-radius:25px;font-size:16px;font-weight:900;box-shadow:0 0 15px rgba(255,0,79,.6)}
+.answer-box{background:#0a4d2a;border:2px solid #00ff88;padding:15px;border-radius:12px;margin-top:15px;font-size:16px;color:#00ff88;display:none;animation:fadeIn.5s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.ticker{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,#6a00ff,#9d00ff);padding:12px 0;font-size:16px;font-weight:900;white-space:nowrap;overflow:hidden;height:50px;z-index:100;border-top:2px solid rgba(255,255,255,0.1)}
+.ticker-content{display:inline-block;animation:scroll 25s linear infinite;padding-right:100%}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.error-box{background:rgba(255,0,0,.2);border:3px solid #ff0000;padding:15px;border-radius:12px;text-align:center;font-size:14px;font-weight:700;display:none;line-height:1.6;margin-bottom:15px}
+@media(min-width:768px){
+body{padding:20px}
+.header{padding:20px 40px;border-radius:18px;margin-bottom:25px}
+.header-title{font-size:32px}
+#clock{font-size:32px}
+.live-dot{width:20px;height:20px}
+.main{padding:0 10px}
+.card{padding:30px;margin-bottom:25px;border-radius:22px}
+.card-title{font-size:30px;margin-bottom:20px}
+.big-number{font-size:85px}
+.goal-info{font-size:24px;margin:20px 0}
+.progress-bar{height:48px;border-radius:25px}
+.progress-fill{font-size:22px}
+.stats-grid{gap:18px;margin-top:22px}
+.stat-box{padding:22px;border-radius:15px}
+.stat-number{font-size:38px}
+.stat-label{font-size:16px}
+.content-text{font-size:28px;min-height:100px}
+.timer-badge{font-size:22px;padding:8px 20px}
+.answer-box{font-size:26px;padding:20px}
+.ticker{font-size:26px;height:60px}
+}
 </style>
 </head>
 <body>
 <div class="header">
-<div class="header-title">بث تقي الرسمي LIVE 24/7 - قائمة 24</div>
+<div class="header-title">ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ - LIVE 24/7</div>
 <div style="display:flex;align-items:center">
 <div class="live-dot"></div>
 <div id="clock">00:00:00</div>
@@ -68,7 +88,7 @@ html, body {
 <div class="card-title">📊 احصائيات القناة</div>
 <div id="errorBox" class="error-box"></div>
 <div style="text-align:center">
-<div style="font-size:16px;color:#888;margin-bottom:8px">المشتركين</div>
+<div style="font-size:14px;color:#888;margin-bottom:8px">المشتركين</div>
 <div id="subs" class="big-number">0</div>
 </div>
 <div class="goal-info">
@@ -85,7 +105,7 @@ html, body {
 <div class="card zekr-card">
 <div class="card-title" style="color:#00ff88">ذكر اليوم 🕌</div>
 <div id="zekr" class="content-text">سبحان الله وبحمده سبحان الله العظيم</div>
-<div style="text-align:center;color:#666;font-size:14px;margin-top:10px">يتغير كل 30 ثانية</div>
+<div style="text-align:center;color:#666;font-size:12px;margin-top:10px">يتغير كل 30 ثانية</div>
 </div>
 <div class="card news-card">
 <div class="card-title">📰 اخبار DZ المضحكة</div>
@@ -100,7 +120,7 @@ html, body {
 </div>
 <div id="riddle" class="content-text">ابن أمك وأبيك وليس بأختك ولا أخيك؟</div>
 <div id="riddleAnswer" class="answer-box"></div>
-<div style="text-align:center;color:#666;font-size:14px;margin-top:10px"><span id="riddleCount">1</span>/30</div>
+<div style="text-align:center;color:#666;font-size:12px;margin-top:10px"><span id="riddleCount">1</span>/70</div>
 </div>
 <div class="card motivate-card">
 <div class="card-title">💪 تحفيز اليوم</div>
@@ -108,147 +128,112 @@ html, body {
 </div>
 </div>
 <div class="ticker">
-<div class="ticker-content">بث مباشر 24/7 من قائمة | اشترك وفعل الجرس | تقي الإمبراطور 👑 | #قائمة24 #بث_مباشر | بث مباشر 24/7 من قائمة | اشترك وفعل الجرس | تقي الإمبراطور 👑 |</div>
+<div class="ticker-content">بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ 👑 | #بث_مباشر #تحدي | بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ 👑 |</div>
 </div>
-
 <script>
-// 2. إنتظار الخطوط باش ما يخرجش مربعات فارغة أو شاشة كحلة
-document.fonts.ready.then(() => {
-
-    // 3. Force GPU (Hardware Acceleration)
-    document.body.style.transform = 'translateZ(0)';
-
-    // 4. Force Repaint (تغيير الـ Opacity يخلي الكروم يعاود يرسم الصفحة)
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 500);
-
-    const API_KEY='AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY';
-    const CHANNEL_ID='UCCji3rVchUafZT6qxETGIxQ';
-    const VIDEO_ID='rCT7sXcUQtg';
-    
-    function getNextGoal(s){const g=[100,500,1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000];for(let x of g){if(s<x)return x}return Math.ceil(s/100000)*100000}
-    
-    // البيانات
-    const riddles=[{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},{q:"ما هو الشيء الذي كلما زاد نقص؟",a:"العمر"},{q:"شيء يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},{q:"شيء إذا أكلته كله تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},{q:"ما هو الشيء الذي في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم يصير منجم"},{q:"شيء له أوراق وليس نبات، له جلد وليس حيوان؟",a:"الكتاب"},{q:"ما هو الشيء الذي يقرصك ولا تراه؟",a:"الجوع"},{q:"شيء تحمله ويحملك؟",a:"الحذاء"},{q:"ما هو البيت الذي ليس فيه أبواب ولا نوافذ؟",a:"بيت الشعر"},{q:"شيء كلما أخذت منه كبر؟",a:"الحفرة"},{q:"ما هو الشيء الذي لا يمشي إلا بالضرب؟",a:"المسمار"},{q:"شيء يطير بلا جناح ويبكي بلا عيون؟",a:"الغيوم"},{q:"ما هو الشيء الذي له عين ولا يرى؟",a:"الإبرة"},{q:"شيء إذا وضعته في الثلاجة لا يبرد؟",a:"الفلفل الحار"},{q:"ما هو الشيء الذي اسمه على لونه؟",a:"البيض"},{q:"شيء موجود في كل بيت ويأكل ولا يشبع؟",a:"النار"},{q:"ما هو الشيء الذي يتكلم جميع اللغات؟",a:"الصدى"},{q:"شيء له رأس ولا عين له؟",a:"الدبوس"},{q:"ما هو الشيء الذي يذهب ولا يرجع؟",a:"الدخان"},{q:"شيء نراه في الدقيقة مرتين وفي القرن مرة واحدة؟",a:"حرف القاف"},{q:"ما هو الشيء الذي يشبه نصف القمر؟",a:"النصف الآخر"},{q:"شيء إذا لمسته صاح؟",a:"الجرس"},{q:"ما هو الشيء الذي يمشي ويقف وليس له أرجل؟",a:"الساعة"},{q:"شيء تذبحه وتبكي عليه؟",a:"البصل"},{q:"ما هو الشيء الذي له أربع أرجل ولا يمشي؟",a:"الكرسي"},{q:"شيء يملأ الغرفة ولا يشغل حيز؟",a:"النور"},{q:"ما هو الشيء الذي يكتب ولا يقرأ؟",a:"القلم"},{q:"شيء إذا دخل الماء ضاع وتشتت؟",a:"السكر"},{q:"ما هو الشيء الذي له خمس أصابع بلا لحم ولا عظم؟",a:"القفاز"}];
-    const motivates=["النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار","ما تستناش الفرصة، اصنعها بيدك","كل يوم فرصة جديدة باه تبدا من جديد","الفشل خطوة للنجاح، ما تحبسهاش","احلم كبير واخدم أكبر","ما تقارنش روحك بالناس، قارن روحك بنفسك البارح","الصبر مفتاح الفرج والنجاح","خدمة اليوم راحة غدوة","ما كانش مستحيل، كاين ما حاولتش بزاف","الطريق طويل بصح النتيجة تستاهل","كون انت التغيير اللي حاب تشوفو","ما تخليش خوفك يقرر بلاصتك","كل عثرة تعلمك تمشي أحسن","النجاح يبدا كي تخرج من منطقة الراحة","ما تستسلمش، البداية دايما صعيبة","ثق في روحك حتى لو الناس ما ثاقوش","اليوم تخدم، غدوة تحصد","ما كاين حتى واحد ناجح ما طاحش قبل","ركز على هدفك وما تشوفش للخلف","العزيمة تصنع المعجزات"];
-    const news=["دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو","عاجل: واحد دار بث 24/7... الجيران بلغو عليه قالو راهو يدير في مصنع مشتركين","كسر: مواطن جزائري وصل 1000 مشترك... دار عرس في الحومة","حصري: دراسة تثبت أن الجزائري يقدر يعيش بلا ماء بصح ما يقدرش يعيش بلا انترنت","عاجل: واحد نسى الباسوورد تاع الفيسبوك... دار حساب جديد ونسى الباسوورد ثاني","كسر: مواطن شاف فيديو 10 ساعات... كي كمل لقاه تكرر 3 مرات","حصري: جزائري اخترع طريقة جديدة للنجاح... يرقد ويحلم بالنجاح","عاجل: واحد دار دايت... نقص 2 كيلو و زاد 5 كيلو فرحة"];
-    const azkar=["سبحان الله وبحمده سبحان الله العظيم","لا إله إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير","استغفر الله العظيم واتوب اليه","لا حول ولا قوة الا بالله العلي العظيم","اللهم صل وسلم على نبينا محمد","سبحان الله والحمد لله ولا إله إلا الله والله أكبر","لا إله إلا أنت سبحانك إني كنت من الظالمين"];
-    
-    // تحديث الساعة
-    setInterval(()=>{
-        const n=new Date();
-        document.getElementById('clock').textContent=n.toLocaleTimeString('en-GB',{timeZone:'Africa/Algiers',hour12:false});
-    }, 1000);
-
-    // 6. نظام الأرقام الوهمية (Mock Mode)
-    let isMockMode = false;
-    let mockSubs = 12540;
-    let mockViews = 450200;
-    let mockLive = 42;
-    let lastSubs = 0;
-
-    function updateDOMStats(sub, v, liveView) {
-        const g = getNextGoal(sub);
-        document.getElementById('subs').innerText = sub.toLocaleString('ar-DZ');
-        document.getElementById('views').innerText = v.toLocaleString('ar-DZ');
-        document.getElementById('goal').innerText = g.toLocaleString('ar-DZ');
-        document.getElementById('remaining').innerText = (g - sub).toLocaleString('ar-DZ');
-        
-        const p = Math.min((sub / g) * 100, 100).toFixed(1);
-        document.getElementById('progress').style.width = p + '%';
-        document.getElementById('progress').innerText = p + '%';
-        
-        if (lastSubs > 0) {
-            document.getElementById('growth').innerText = ((sub - lastSubs) * 60).toLocaleString('ar-DZ') + '/ساعة';
-        }
-        lastSubs = sub;
-        
-        if(liveView !== null) {
-            document.getElementById('liveViewers').innerText = liveView.toLocaleString('ar-DZ');
-        }
-    }
-
-    async function fetchData() {
-        if(isMockMode) return; // إذا كنا في المود الوهمي، ما نزيدوش نبعثو API Request باه ما نتبلوكوش
-
-        try {
-            const rSubs = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
-            const dSubs = await rSubs.json();
-            
-            let liveViewCount = null;
-            if(VIDEO_ID !== 'YOUR_LIVE_VIDEO_ID'){
-                const rLive = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${VIDEO_ID}&key=${API_KEY}`);
-                const dLive = await rLive.json();
-                if(dLive.items && dLive.items[0]?.liveStreamingDetails){
-                    liveViewCount = parseInt(dLive.items[0].liveStreamingDetails.concurrentViewers || 0);
-                }
-            }
-
-            if(dSubs.items && dSubs.items[0]) {
-                const s = dSubs.items[0].statistics;
-                updateDOMStats(parseInt(s.subscriberCount), parseInt(s.viewCount), liveViewCount);
-                document.getElementById('errorBox').style.display = 'none';
-            } else {
-                throw new Error("No data");
-            }
-        } catch(e) {
-            isMockMode = true; // تحويل إلى نظام وهمي لتفادي الشاشة الفارغة
-            document.getElementById('errorBox').innerHTML = '⚠️ API Limit - جاري استخدام بيانات تفاعلية للبث';
-            document.getElementById('errorBox').style.display = 'block';
-        }
-    }
-
-    // 5. محرك Mock يخدم كل 5 ثواني إذا حبس الـ API
-    setInterval(() => {
-        if(isMockMode) {
-            mockSubs += Math.floor(Math.random() * 2); // يزيد مشترك أو 0
-            mockViews += Math.floor(Math.random() * 15); // تزيد المشاهدات
-            mockLive += (Math.random() > 0.5 ? 1 : -1); // المشاهدين يطلعو ويهبطو
-            if(mockLive < 5) mockLive = 5;
-            
-            updateDOMStats(mockSubs, mockViews, mockLive);
-        }
-    }, 5000);
-
-    let z=0, n=0, r=0, m=0, t=180, sa=false;
-    
-    function rot() {
-        document.getElementById('zekr').innerText = azkar[z % azkar.length]; z++;
-        document.getElementById('news').innerText = news[n % news.length]; n++;
-        document.getElementById('motivate').innerText = motivates[m % motivates.length]; m++;
-    }
-    
-    function updR() {
-        const c = riddles[r % riddles.length];
-        document.getElementById('riddle').innerText = c.q;
-        document.getElementById('riddleAnswer').style.display = 'none';
-        document.getElementById('riddleAnswer').innerText = 'الإجابة: ' + c.a;
-        document.getElementById('riddleCount').innerText = (r % riddles.length) + 1;
-        r++; t = 180; sa = false;
-    }
-    
-    function updT() {
+const API_KEY='AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY';
+const CHANNEL_ID='UCCji3rVchUafZT6qxETGIxQ';
+const VIDEO_ID='ZSXq4KPLoR8';
+function getNextGoal(s){const g=[100,500,1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000];for(let x of g){if(s<x)return x}return Math.ceil(s/100000)*100000}
+const riddles=[{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},{q:"ما هو الشيء الذي كلما زاد نقص؟",a:"العمر"},{q:"شيء يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},{q:"شيء إذا أكلته كله تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},{q:"ما هو الشيء الذي في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم يصير منجم"},{q:"شيء له أوراق وليس نبات، له جلد وليس حيوان؟",a:"الكتاب"},{q:"ما هو الشيء الذي يقرصك ولا تراه؟",a:"الجوع"},{q:"شيء تحمله ويحملك؟",a:"الحذاء"},{q:"ما هو البيت الذي ليس فيه أبواب ولا نوافذ؟",a:"بيت الشعر"},{q:"شيء كلما أخذت منه كبر؟",a:"الحفرة"},{q:"ما هو الشيء الذي لا يمشي إلا بالضرب؟",a:"المسمار"},{q:"شيء يطير بلا جناح ويبكي بلا عيون؟",a:"الغيوم"},{q:"ما هو الشيء الذي له عين ولا يرى؟",a:"الإبرة"},{q:"شيء إذا وضعته في الثلاجة لا يبرد؟",a:"الفلفل الحار"},{q:"ما هو الشيء الذي اسمه على لونه؟",a:"البيض"},{q:"شيء موجود في كل بيت ويأكل ولا يشبع؟",a:"النار"},{q:"ما هو الشيء الذي يتكلم جميع اللغات؟",a:"الصدى"},{q:"شيء له رأس ولا عين له؟",a:"الدبوس"},{q:"ما هو الشيء الذي يذهب ولا يرجع؟",a:"الدخان"},{q:"شيء نراه في الدقيقة مرتين وفي القرن مرة واحدة؟",a:"حرف القاف"},{q:"ما هو الشيء الذي يشبه نصف القمر؟",a:"النصف الآخر"},{q:"شيء إذا لمسته صاح؟",a:"الجرس"},{q:"ما هو الشيء الذي يمشي ويقف وليس له أرجل؟",a:"الساعة"},{q:"شيء تذبحه وتبكي عليه؟",a:"البصل"},{q:"ما هو الشيء الذي له أربع أرجل ولا يمشي؟",a:"الكرسي"},{q:"شيء يملأ الغرفة ولا يشغل حيز؟",a:"النور"},{q:"ما هو الشيء الذي يكتب ولا يقرأ؟",a:"القلم"},{q:"شيء إذا دخل الماء ضاع وتشتت؟",a:"السكر"},{q:"ما هو الشيء الذي له خمس أصابع بلا لحم ولا عظم؟",a:"القفاز"}];
+const motivates=["النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار","ما تستناش الفرصة، اصنعها بيدك","كل يوم فرصة جديدة باه تبدا من جديد","الفشل خطوة للنجاح، ما تحبسهاش","احلم كبير واخدم أكبر","ما تقارنش روحك بالناس، قارن روحك بنفسك البارح","الصبر مفتاح الفرج والنجاح","خدمة اليوم راحة غدوة","ما كانش مستحيل، كاين ما حاولتش بزاف","الطريق طويل بصح النتيجة تستاهل","كون انت التغيير اللي حاب تشوفو","ما تخليش خوفك يقرر بلاصتك","كل عثرة تعلمك تمشي أحسن","النجاح يبدا كي تخرج من منطقة الراحة","ما تستسلمش، البداية دايما صعيبة","ثق في روحك حتى لو الناس ما ثاقوش","اليوم تخدم، غدوة تحصد","ما كاين حتى واحد ناجح ما طاحش قبل","ركز على هدفك وما تشوفش للخلف","العزيمة تصنع المعجزات","كون قوي، الحياة للضعاف ما ترحمش","كل ثانية تضيعها ما ترجعش","اخدم في صمت وخلي نجاحك يدير الضجة","ما تحكمش على نفسك من محاولة واحدة","الحلم بلا عمل مجرد وهم","الفرق بينك وبين الناجح هو الاستمرار","ما تخليش رأي الناس يحبسك","كون فخور بالمحاولات تاعك حتى لو فشلت","النجاح رحلة مش وجهة","كل يوم تتعب فيه راك تقرب لحلمك","ما تستناش الوقت المناسب، اصنعو","الفاشل يلقى أعذار، الناجح يلقى طريقة","تعلم من البارح، عيش اليوم، احلم بغدوة","ما تخافش تبدا من الصفر","النجاح ما يجيش للي يستناه، يجي للي يسعى ليه","كون سبب في نجاحك مش عذر في فشلك","ما تبيعش حلمك بثمن الراحة","كل خطوة صغيرة تقربك للهدف الكبير","ما تخلطش بين البطء والفشل","الناجحين كانوا مبتدئين في يوم من الأيام","اخدم كي واحد رابح، حتى لو راك خاسر","ما تخليش الماضي يسجن مستقبلك","كون انت البطل في قصة حياتك","النجاح يجي بعد التعب، مش قبلو","ما تقولش صعيب، قول ما حاولتش كفاية","كل ما طحت نوض أقوى","الوقت يمر، السؤال واش درت فيه","ما تستناش التشجيع، شجع روحك","الحياة تعطيك على قد ما تعطيها","النجاح قرار، ماشي صدفة","قالمة 24: من حمام دباغ للعالم 💪","ولاد قالمة ما يعرفوش المستحيل 🔥","قالمة تاريخ ومستقبل، وانت جزء منو","من جبال ماونة نوصلو للمليون 📈","قالمة 24: الرجلة والنية","قالمة ماشي غير ولاية، قالمة عقلية 🏆","قالمة تصنع الرجال والرجال يصنعو التاريخ","من قالمة نبداو و للعالمية نوصلو","ولاد قالمة وقت الشدة يبانو","قالمة 24 مش رقم، هي ولاية الرجال","اخدم اليوم باه تفتخر غدوة","ما تخليش الظروف تحكم فيك، انت احكم فيها","اللي يخاف من الفشل عمرو ما ينجح","كل مشكلة عندها حل، غير انت فتش عليه","ما تستناش الناس تشجعك، شجع روحك بروحك","النجاح يبدا من راسك قبل يديك","كون قد التحدي ولا انسحب بكري","ما تندمش على اللي فات، اخدم للجاي","الحياة قصيرة، ما تضيعهاش في الخوف","كون قدوة قبل ما تكون ناقد"];
+const news=["دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو","عاجل: واحد من قالمة دار بث 24/7... الجيران بلغو عليه قالو راهو يدير في مصنع مشتركين","كسر: مواطن قالمي وصل 1000 مشترك... دار عرس في الحومة","حصري: دراسة تثبت أن الجزائري يقدر يعيش بلا ماء بصح ما يقدرش يعيش بلا انترنت","عاجل: واحد نسى الباسوورد تاع الفيسبوك... دار حساب جديد ونسى الباسوورد ثاني","كسر: مواطن شاف فيديو 10 ساعات... كي كمل لقاه تكرر 3 مرات","حصري: جزائري اخترع طريقة جديدة للنجاح... يرقد ويحلم بالنجاح","عاجل: واحد دار دايت... نقص 2 كيلو و زاد 5 كيلو فرحة","كسر: مواطن شرا هاتف جديد... الصباح لقاه قديم","حصري: دراسة: الجزائري يقدر يهدر 5 ساعات في التيليفون على والو","عاجل: واحد ربح في المسابقة... الجائزة كانت مسابقة أخرى","كسر: مواطن فتح قناة يوتيوب... أول فيديو عنوانو: كيفاش نفتح قناة يوتيوب","حصري: دراسة: 99% من الجزائريين يقولو غدوة نبدا الريجيم","عاجل: واحد شرا لابتوب للألعاب... يستعملو باه يتفرج يوتيوب","كسر: مواطن دار بث مباشر... نسى الكاميرا طافية 3 سوايع"];
+const azkar=["سبحان الله وبحمده سبحان الله العظيم","لا إله إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير","استغفر الله العظيم واتوب اليه","لا حول ولا قوة الا بالله العلي العظيم","اللهم صل وسلم على نبينا محمد","سبحان الله والحمد لله ولا إله إلا الله والله أكبر","لا إله إلا أنت سبحانك إني كنت من الظالمين","حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم"];
+function updateClock(){
+    const now=new Date();
+    const time=now.toLocaleTimeString('en-GB',{timeZone:'Africa/Algiers',hour12:false});
+    document.getElementById('clock').textContent=time;
+}
+let z=0,n=0,r=0,m=0,t=180,sa=false;
+let riddleInterval=null;
+function rot(){
+    document.getElementById('zekr').innerText=azkar[z%azkar.length];z++;
+    document.getElementById('news').innerText=news[n%news.length];n++;
+    document.getElementById('motivate').innerText=motivates[m%motivates.length];m++;
+}
+function updR(){
+    const c=riddles[r%riddles.length];
+    document.getElementById('riddle').innerText=c.q;
+    document.getElementById('riddleAnswer').style.display='none';
+    document.getElementById('riddleAnswer').innerText='الإجابة: '+c.a;
+    document.getElementById('riddleCount').innerText=(r%riddles.length)+1;
+    r++;t=180;sa=false;
+}
+function startRiddleTimer(){
+    if(riddleInterval) clearInterval(riddleInterval);
+    riddleInterval = setInterval(()=>{
         t--;
-        const min = Math.floor(t / 60);
-        const sec = t % 60;
-        document.getElementById('riddleTimer').innerText = `${min}:${sec.toString().padStart(2,'0')}`;
-        if(t <= 0 && !sa) {
-            document.getElementById('riddleAnswer').style.display = 'block';
-            sa = true;
-            setTimeout(updR, 10000); // الجواب يبقى 10 ثواني
+        const min=Math.floor(t/60);
+        const sec=t%60;
+        document.getElementById('riddleTimer').innerText=`${min}:${sec.toString().padStart(2,'0')}`;
+        if(t<=0&&!sa){
+            document.getElementById('riddleAnswer').style.display='block';
+            sa=true;
+            setTimeout(()=>{
+                updR();
+                t=180;
+            },10000);
         }
+    },1000);
+}
+let lastSubs=0;
+async function getSubs(){
+    try{
+        const r=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
+        const d=await r.json();
+        if(d.items&&d.items[0]){
+            const s=d.items[0].statistics;
+            const sub=parseInt(s.subscriberCount);
+            const v=parseInt(s.viewCount);
+            const g=getNextGoal(sub);
+            document.getElementById('subs').innerText=sub.toLocaleString('ar-DZ');
+            document.getElementById('views').innerText=v.toLocaleString('ar-DZ');
+            document.getElementById('goal').innerText=g.toLocaleString('ar-DZ');
+            document.getElementById('remaining').innerText=(g-sub).toLocaleString('ar-DZ');
+            const p=Math.min((sub/g)*100,100).toFixed(1);
+            document.getElementById('progress').style.width=p+'%';
+            document.getElementById('progress').innerText=p+'%';
+            if(lastSubs>0){document.getElementById('growth').innerText=((sub-lastSubs)*60).toLocaleString('ar-DZ')+'/ساعة'}
+            lastSubs=sub;
+            document.getElementById('errorBox').style.display='none';
+        }
+    }catch(e){
+        document.getElementById('errorBox').innerHTML='⚠️ فشل الاتصال - تأكد من API_KEY و CHANNEL_ID';
+        document.getElementById('errorBox').style.display='block';
     }
-
-    // Interval settings
-    setInterval(fetchData, 60000); // نجيبو من API مرة في الدقيقة
+}
+async function getLiveViewers(){
+    try{
+        if(VIDEO_ID==='YOUR_LIVE_VIDEO_ID')return;
+        const r=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${VIDEO_ID}&key=${API_KEY}`);
+        const d=await r.json();
+        if(d.items&&d.items[0]?.liveStreamingDetails){
+            const v=d.items[0].liveStreamingDetails.concurrentViewers||0;
+            document.getElementById('liveViewers').innerText=parseInt(v).toLocaleString('ar-DZ');
+        }
+    }catch(e){}
+}
+// Force Render للـ Xvfb - هذا هو السر النووي
+document.fonts.ready.then(() => {
+    updateClock();
+    setInterval(updateClock, 1000);
+    getSubs();
+    setInterval(getSubs, 20000);
+    getLiveViewers();
+    setInterval(getLiveViewers, 30000);
+    rot();
     setInterval(rot, 30000);
-    setInterval(updT, 1000); // 5. راهو يخدم دايما بفضل الفلاقز تاعك
-
-    // أول استدعاء
-    fetchData(); 
-    rot(); 
     updR();
+    startRiddleTimer();
+
+    // Force GPU + Repaint بعد 500ms
+    setTimeout(() => {
+        document.body.style.transform = 'translateZ(0)';
+        document.body.style.opacity = '0.99';
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+    }, 500);
 });
 </script>
 </body>
