@@ -3,98 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, initial-scale=1.0">
-<title>ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ - بث مباشر 24/7</title>
+<meta name="google" content="notranslate">
+<title translate="no">ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ - بث مباشر 24/7</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{
-    width:1920px!important;
-    height:1080px!important;
+    width:1920px!important;height:1080px!important;
     overflow:hidden!important;
-    background:#6a00ff;
-    background:linear-gradient(135deg,#6a00ff 0%,#9d00ff 100%);
-    font-family:'Cairo',sans-serif;
-    color:#fff;
-    min-height:1080px!important;
-    padding:10px;
-    transform:translateZ(0);
-    will-change:transform;
+    background:#6a00ff!important;
+    background:linear-gradient(135deg,#6a00ff 0%,#9d00ff 100%)!important;
+    font-family:'Cairo',sans-serif;color:#fff;position:fixed!important;
 }
-.header{background:rgba(10,10,10,0.95);padding:15px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:900;border-radius:12px;margin-bottom:15px;backdrop-filter:blur(10px)}
-.header-title{font-size:18px}
-.live-dot{width:12px;height:12px;background:#ff0000;border-radius:50%;animation:blink 1s infinite;box-shadow:0 0 10px #ff0000;margin:0 10px}
+.header{
+    background:rgba(10,10,10,0.95);padding:20px 30px;display:flex;
+    justify-content:space-between;align-items:center;font-weight:900;
+    backdrop-filter:blur(10px);height:90px;
+}
+.header-title{font-size:32px}
+.live-dot{width:20px;height:20px;background:#ff0000;border-radius:50%;animation:blink 1s infinite;box-shadow:0 0 10px #ff0000;margin:0 10px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-#clock{font-size:18px}
-.main{max-width:1400px;margin:0 auto;padding-bottom:70px}
-.card{background:#0f0f0f;border:3px solid #1a1a1a;border-radius:18px;padding:22px;margin-bottom:15px;box-shadow:0 8px 25px rgba(0,0,0,.6)}
-.stats-card{border-color:#222}
+#clock{font-size:32px}
+.main{
+    width:1920px;height:930px;padding:20px 30px 80px 30px;
+    display:grid;grid-template-columns:600px 1fr 1fr;gap:20px;
+}
+.card{background:#0f0f0f;border:3px solid #1a1a1a;border-radius:18px;padding:20px;box-shadow:0 8px 25px rgba(0,0,0,.6)}
+.stats-card{border-color:#222;height:100%;display:flex;flex-direction:column}
+.middle-column,.right-column{display:grid;grid-template-rows:1fr 1fr;gap:20px;height:100%}
 .zekr-card{border-top:5px solid #00ff88}
 .news-card{border-top:5px solid #ff8800}
 .riddle-card{border-top:5px solid #ff004f}
 .motivate-card{border-top:5px solid #00ccff}
-.card-title{font-size:22px;font-weight:900;margin-bottom:15px;display:flex;align-items:center;gap:10px}
-.big-number{font-size:55px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,.6);line-height:1;text-align:center}
-.goal-info{display:flex;justify-content:space-between;font-size:15px;margin:15px 0;font-weight:700}
-.progress-bar{background:#050505;height:38px;border-radius:20px;overflow:hidden;border:2px solid #1a1a1a}
-.progress-fill{background:linear-gradient(90deg,#00ff88,#00cc66);height:100%;transition:width.8s ease;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
-.stat-box{background:#050505;padding:15px;border-radius:12px;text-align:center;border:2px solid #1a1a1a}
-.stat-number{font-size:24px;font-weight:900;color:#ffcc00}
-.stat-label{font-size:12px;color:#888;margin-top:5px}
-.content-text{font-size:18px;line-height:1.9;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;font-weight:700;padding:10px}
-.news-inner{background:#050505;border-radius:12px;padding:18px;margin:5px 0;border:2px solid #1a1a1a}
-.riddle-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
-.timer-badge{background:#ff004f;padding:6px 15px;border-radius:25px;font-size:16px;font-weight:900;box-shadow:0 0 15px rgba(255,0,79,.6)}
-.answer-box{background:#0a4d2a;border:2px solid #00ff88;padding:15px;border-radius:12px;margin-top:15px;font-size:16px;color:#00ff88;display:none;animation:fadeIn.5s}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.ticker{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,#6a00ff,#9d00ff);padding:12px 0;font-size:16px;font-weight:900;white-space:nowrap;overflow:hidden;height:50px;z-index:100;border-top:2px solid rgba(255,255,255,0.1)}
+.card-title{font-size:26px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.big-number{font-size:90px;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,.6);line-height:1;text-align:center;margin:20px 0}
+.goal-info{display:flex;justify-content:space-between;font-size:22px;margin:15px 0;font-weight:700}
+.progress-bar{background:#050505;height:45px;border-radius:25px;overflow:hidden;border:2px solid #1a1a1a}
+.progress-fill{background:linear-gradient(90deg,#00ff88,#00cc66);height:100%;transition:width 0.8s ease;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#000}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+.stat-box{background:#050505;padding:18px;border-radius:15px;text-align:center;border:2px solid #1a1a1a}
+.stat-number{font-size:32px;font-weight:900;color:#ffcc00}
+.stat-label{font-size:14px;color:#888;margin-top:5px}
+.content-text{font-size:24px;line-height:1.8;text-align:center;display:flex;align-items:center;justify-content:center;font-weight:700;padding:5px;height:100%}
+.news-inner{background:#050505;border-radius:12px;padding:15px;border:2px solid #1a1a1a;height:100%}
+.riddle-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.timer-badge{background:#ff004f;padding:6px 18px;border-radius:25px;font-size:20px;font-weight:900;box-shadow:0 0 15px rgba(255,0,79,.6)}
+.answer-box{background:#0a4d2a;border:2px solid #00ff88;padding:15px;border-radius:12px;margin-top:10px;font-size:22px;color:#00ff88;display:none}
+.ticker{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,#6a00ff,#9d00ff);padding:12px 0;font-size:26px;font-weight:900;white-space:nowrap;overflow:hidden;height:60px;border-top:2px solid rgba(255,255,255,0.1)}
 .ticker-content{display:inline-block;animation:scroll 25s linear infinite;padding-right:100%}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-.error-box{background:rgba(255,0,0,.2);border:3px solid #ff0000;padding:15px;border-radius:12px;text-align:center;font-size:14px;font-weight:700;display:none;line-height:1.6;margin-bottom:15px}
-@media(min-width:768px){
-body{padding:20px}
-.header{padding:20px 40px;border-radius:18px;margin-bottom:25px}
-.header-title{font-size:32px}
-#clock{font-size:32px}
-.live-dot{width:20px;height:20px}
-.main{padding:0 10px}
-.card{padding:30px;margin-bottom:25px;border-radius:22px}
-.card-title{font-size:30px;margin-bottom:20px}
-.big-number{font-size:85px}
-.goal-info{font-size:24px;margin:20px 0}
-.progress-bar{height:48px;border-radius:25px}
-.progress-fill{font-size:22px}
-.stats-grid{gap:18px;margin-top:22px}
-.stat-box{padding:22px;border-radius:15px}
-.stat-number{font-size:38px}
-.stat-label{font-size:16px}
-.content-text{font-size:28px;min-height:100px}
-.timer-badge{font-size:22px;padding:8px 20px}
-.answer-box{font-size:26px;padding:20px}
-.ticker{font-size:26px;height:60px}
-}
+.error-box{background:rgba(255,0,0,.2);border:3px solid #ff0000;padding:12px;border-radius:12px;text-align:center;font-size:13px;font-weight:700;display:none;line-height:1.6;margin-bottom:15px}
 </style>
 </head>
-<body>
+<body translate="no">
 <div class="header">
 <div class="header-title">ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ - LIVE 24/7</div>
-<div style="display:flex;align-items:center">
-<div class="live-dot"></div>
-<div id="clock">00:00:00</div>
-</div>
+<div style="display:flex;align-items:center"><div class="live-dot"></div><div id="clock">00:00:00</div></div>
 </div>
 <div class="main">
 <div class="card stats-card">
 <div class="card-title">📊 احصائيات القناة</div>
 <div id="errorBox" class="error-box"></div>
-<div style="text-align:center">
-<div style="font-size:14px;color:#888;margin-bottom:8px">المشتركين</div>
-<div id="subs" class="big-number">0</div>
-</div>
-<div class="goal-info">
-<div>باقي <span id="remaining">0</span></div>
-<div>🎯 الهدف: <span id="goal">0</span></div>
-</div>
+<div style="text-align:center"><div style="font-size:16px;color:#888;margin-bottom:8px">المشتركين</div><div id="subs" class="big-number">0</div></div>
+<div class="goal-info"><div>باقي <span id="remaining">0</span></div><div>🎯 الهدف: <span id="goal">0</span></div></div>
 <div class="progress-bar"><div id="progress" class="progress-fill">0%</div></div>
 <div class="stats-grid">
 <div class="stat-box"><div id="views" class="stat-number">0</div><div class="stat-label">👀 مشاهدات</div></div>
@@ -102,90 +73,337 @@ body{padding:20px}
 <div class="stat-box"><div id="liveViewers" class="stat-number">0</div><div class="stat-label">👁️ يشاهد</div></div>
 </div>
 </div>
-<div class="card zekr-card">
-<div class="card-title" style="color:#00ff88">ذكر اليوم 🕌</div>
-<div id="zekr" class="content-text">سبحان الله وبحمده سبحان الله العظيم</div>
-<div style="text-align:center;color:#666;font-size:12px;margin-top:10px">يتغير كل 30 ثانية</div>
+<div class="middle-column">
+<div class="card zekr-card"><div class="card-title" style="color:#00ff88">ذكر اليوم 🕌</div><div id="zekr" class="content-text">سبحان الله وبحمده</div></div>
+<div class="card news-card"><div class="card-title">📰 اخبار DZ المضحكة</div><div class="news-inner"><div id="news" class="content-text">جاري التحميل...</div></div></div>
 </div>
-<div class="card news-card">
-<div class="card-title">📰 اخبار DZ المضحكة</div>
-<div class="news-inner">
-<div id="news" class="content-text">دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو</div>
+<div class="right-column">
+<div class="card riddle-card"><div class="riddle-header"><div class="card-title">لغز تقي 🤔</div><div class="timer-badge" id="riddleTimer">3:00</div></div><div id="riddle" class="content-text">جاري التحميل...</div><div id="riddleAnswer" class="answer-box"></div></div>
+<div class="card motivate-card"><div class="card-title">💪 تحفيز اليوم</div><div id="motivate" class="content-text">النجاح يبدأ بخطوة</div></div>
 </div>
 </div>
-<div class="card riddle-card">
-<div class="riddle-header">
-<div class="card-title">لغز تقي 🤔</div>
-<div class="timer-badge" id="riddleTimer">3:00</div>
-</div>
-<div id="riddle" class="content-text">ابن أمك وأبيك وليس بأختك ولا أخيك؟</div>
-<div id="riddleAnswer" class="answer-box"></div>
-<div style="text-align:center;color:#666;font-size:12px;margin-top:10px"><span id="riddleCount">1</span>/70</div>
-</div>
-<div class="card motivate-card">
-<div class="card-title">💪 تحفيز اليوم</div>
-<div id="motivate" class="content-text">النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار</div>
-</div>
-</div>
-<div class="ticker">
-<div class="ticker-content">بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ 👑 | #بث_مباشر #تحدي | بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ 👑 |</div>
-</div>
+<div class="ticker"><div class="ticker-content">بث مباشر 24/7 | اشترك وفعل الجرس | ɪʈʂ ʈɑkɪ!! 🇩🇿²⁴ 👑 | #بث_مباشر #تحدي |</div></div>
 <script>
-const API_KEY='AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY';
+const API_KEY='AIzaSyDV6wsuCP5iGrLUFkTOwCA-veseDC2uhNY'; // حطو في Google Cloud و فعل HTTP referrers
 const CHANNEL_ID='UCCji3rVchUafZT6qxETGIxQ';
-const VIDEO_ID='ZSXq4KPLoR8';
+let VIDEO_ID=''; // نجيبوه تلقائي
+
 function getNextGoal(s){const g=[100,500,1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000];for(let x of g){if(s<x)return x}return Math.ceil(s/100000)*100000}
-const riddles=[{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},{q:"ما هو الشيء الذي كلما زاد نقص؟",a:"العمر"},{q:"شيء يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},{q:"شيء إذا أكلته كله تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},{q:"ما هو الشيء الذي في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم يصير منجم"},{q:"شيء له أوراق وليس نبات، له جلد وليس حيوان؟",a:"الكتاب"},{q:"ما هو الشيء الذي يقرصك ولا تراه؟",a:"الجوع"},{q:"شيء تحمله ويحملك؟",a:"الحذاء"},{q:"ما هو البيت الذي ليس فيه أبواب ولا نوافذ؟",a:"بيت الشعر"},{q:"شيء كلما أخذت منه كبر؟",a:"الحفرة"},{q:"ما هو الشيء الذي لا يمشي إلا بالضرب؟",a:"المسمار"},{q:"شيء يطير بلا جناح ويبكي بلا عيون؟",a:"الغيوم"},{q:"ما هو الشيء الذي له عين ولا يرى؟",a:"الإبرة"},{q:"شيء إذا وضعته في الثلاجة لا يبرد؟",a:"الفلفل الحار"},{q:"ما هو الشيء الذي اسمه على لونه؟",a:"البيض"},{q:"شيء موجود في كل بيت ويأكل ولا يشبع؟",a:"النار"},{q:"ما هو الشيء الذي يتكلم جميع اللغات؟",a:"الصدى"},{q:"شيء له رأس ولا عين له؟",a:"الدبوس"},{q:"ما هو الشيء الذي يذهب ولا يرجع؟",a:"الدخان"},{q:"شيء نراه في الدقيقة مرتين وفي القرن مرة واحدة؟",a:"حرف القاف"},{q:"ما هو الشيء الذي يشبه نصف القمر؟",a:"النصف الآخر"},{q:"شيء إذا لمسته صاح؟",a:"الجرس"},{q:"ما هو الشيء الذي يمشي ويقف وليس له أرجل؟",a:"الساعة"},{q:"شيء تذبحه وتبكي عليه؟",a:"البصل"},{q:"ما هو الشيء الذي له أربع أرجل ولا يمشي؟",a:"الكرسي"},{q:"شيء يملأ الغرفة ولا يشغل حيز؟",a:"النور"},{q:"ما هو الشيء الذي يكتب ولا يقرأ؟",a:"القلم"},{q:"شيء إذا دخل الماء ضاع وتشتت؟",a:"السكر"},{q:"ما هو الشيء الذي له خمس أصابع بلا لحم ولا عظم؟",a:"القفاز"}];
-const motivates=["النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار","ما تستناش الفرصة، اصنعها بيدك","كل يوم فرصة جديدة باه تبدا من جديد","الفشل خطوة للنجاح، ما تحبسهاش","احلم كبير واخدم أكبر","ما تقارنش روحك بالناس، قارن روحك بنفسك البارح","الصبر مفتاح الفرج والنجاح","خدمة اليوم راحة غدوة","ما كانش مستحيل، كاين ما حاولتش بزاف","الطريق طويل بصح النتيجة تستاهل","كون انت التغيير اللي حاب تشوفو","ما تخليش خوفك يقرر بلاصتك","كل عثرة تعلمك تمشي أحسن","النجاح يبدا كي تخرج من منطقة الراحة","ما تستسلمش، البداية دايما صعيبة","ثق في روحك حتى لو الناس ما ثاقوش","اليوم تخدم، غدوة تحصد","ما كاين حتى واحد ناجح ما طاحش قبل","ركز على هدفك وما تشوفش للخلف","العزيمة تصنع المعجزات","كون قوي، الحياة للضعاف ما ترحمش","كل ثانية تضيعها ما ترجعش","اخدم في صمت وخلي نجاحك يدير الضجة","ما تحكمش على نفسك من محاولة واحدة","الحلم بلا عمل مجرد وهم","الفرق بينك وبين الناجح هو الاستمرار","ما تخليش رأي الناس يحبسك","كون فخور بالمحاولات تاعك حتى لو فشلت","النجاح رحلة مش وجهة","كل يوم تتعب فيه راك تقرب لحلمك","ما تستناش الوقت المناسب، اصنعو","الفاشل يلقى أعذار، الناجح يلقى طريقة","تعلم من البارح، عيش اليوم، احلم بغدوة","ما تخافش تبدا من الصفر","النجاح ما يجيش للي يستناه، يجي للي يسعى ليه","كون سبب في نجاحك مش عذر في فشلك","ما تبيعش حلمك بثمن الراحة","كل خطوة صغيرة تقربك للهدف الكبير","ما تخلطش بين البطء والفشل","الناجحين كانوا مبتدئين في يوم من الأيام","اخدم كي واحد رابح، حتى لو راك خاسر","ما تخليش الماضي يسجن مستقبلك","كون انت البطل في قصة حياتك","النجاح يجي بعد التعب، مش قبلو","ما تقولش صعيب، قول ما حاولتش كفاية","كل ما طحت نوض أقوى","الوقت يمر، السؤال واش درت فيه","ما تستناش التشجيع، شجع روحك","الحياة تعطيك على قد ما تعطيها","النجاح قرار، ماشي صدفة","قالمة 24: من حمام دباغ للعالم 💪","ولاد قالمة ما يعرفوش المستحيل 🔥","قالمة تاريخ ومستقبل، وانت جزء منو","من جبال ماونة نوصلو للمليون 📈","قالمة 24: الرجلة والنية","قالمة ماشي غير ولاية، قالمة عقلية 🏆","قالمة تصنع الرجال والرجال يصنعو التاريخ","من قالمة نبداو و للعالمية نوصلو","ولاد قالمة وقت الشدة يبانو","قالمة 24 مش رقم، هي ولاية الرجال","اخدم اليوم باه تفتخر غدوة","ما تخليش الظروف تحكم فيك، انت احكم فيها","اللي يخاف من الفشل عمرو ما ينجح","كل مشكلة عندها حل، غير انت فتش عليه","ما تستناش الناس تشجعك، شجع روحك بروحك","النجاح يبدا من راسك قبل يديك","كون قد التحدي ولا انسحب بكري","ما تندمش على اللي فات، اخدم للجاي","الحياة قصيرة، ما تضيعهاش في الخوف","كون قدوة قبل ما تكون ناقد"];
-const news=["دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو","عاجل: واحد من قالمة دار بث 24/7... الجيران بلغو عليه قالو راهو يدير في مصنع مشتركين","كسر: مواطن قالمي وصل 1000 مشترك... دار عرس في الحومة","حصري: دراسة تثبت أن الجزائري يقدر يعيش بلا ماء بصح ما يقدرش يعيش بلا انترنت","عاجل: واحد نسى الباسوورد تاع الفيسبوك... دار حساب جديد ونسى الباسوورد ثاني","كسر: مواطن شاف فيديو 10 ساعات... كي كمل لقاه تكرر 3 مرات","حصري: جزائري اخترع طريقة جديدة للنجاح... يرقد ويحلم بالنجاح","عاجل: واحد دار دايت... نقص 2 كيلو و زاد 5 كيلو فرحة","كسر: مواطن شرا هاتف جديد... الصباح لقاه قديم","حصري: دراسة: الجزائري يقدر يهدر 5 ساعات في التيليفون على والو","عاجل: واحد ربح في المسابقة... الجائزة كانت مسابقة أخرى","كسر: مواطن فتح قناة يوتيوب... أول فيديو عنوانو: كيفاش نفتح قناة يوتيوب","حصري: دراسة: 99% من الجزائريين يقولو غدوة نبدا الريجيم","عاجل: واحد شرا لابتوب للألعاب... يستعملو باه يتفرج يوتيوب","كسر: مواطن دار بث مباشر... نسى الكاميرا طافية 3 سوايع"];
-const azkar=["سبحان الله وبحمده سبحان الله العظيم","لا إله إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير","استغفر الله العظيم واتوب اليه","لا حول ولا قوة الا بالله العلي العظيم","اللهم صل وسلم على نبينا محمد","سبحان الله والحمد لله ولا إله إلا الله والله أكبر","لا إله إلا أنت سبحانك إني كنت من الظالمين","حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم"];
-function updateClock(){
-    const now=new Date();
-    const time=now.toLocaleTimeString('en-GB',{timeZone:'Africa/Algiers',hour12:false});
-    document.getElementById('clock').textContent=time;
+// حط الـ 70 تاعك هنا
+const azkar=[
+"سبحان الله وبحمده سبحان الله العظيم",
+"لا إله إلا الله وحده لا شريك له له الملك وله الحمد وهو على كل شيء قدير",
+"استغفر الله العظيم واتوب اليه",
+"لا حول ولا قوة الا بالله العلي العظيم",
+"اللهم صل وسلم على نبينا محمد",
+"سبحان الله والحمد لله ولا إله إلا الله والله أكبر",
+"لا إله إلا أنت سبحانك إني كنت من الظالمين",
+"حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم",
+"اللهم إني أعوذ بك من الهم والحزن",
+"اللهم اغفر لي ولوالدي وللمؤمنين يوم يقوم الحساب",
+"أستغفر الله العظيم من كل ذنب عظيم",
+"اللهم آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار",
+"لا إله إلا الله الملك الحق المبين",
+"سبحان الله عدد خلقه ورضا نفسه وزنة عرشه ومداد كلماته",
+"اللهم إني أسألك العفو والعافية",
+"يا حي يا قيوم برحمتك أستغيث",
+"اللهم أعني على ذكرك وشكرك وحسن عبادتك",
+"ربنا لا تؤاخذنا إن نسينا أو أخطأنا",
+"اللهم اهدني فيمن هديت",
+"اللهم ارزقني رزقا حلالا طيبا",
+"اللهم بارك لي فيما أعطيت",
+"اللهم قني عذابك يوم تبعث عبادك",
+"اللهم إني أسألك الجنة وأعوذ بك من النار",
+"اللهم ثبت قلبي على دينك",
+"اللهم اجعلني من التوابين",
+"اللهم اجعلني من المتطهرين",
+"اللهم اجعل القرآن ربيع قلبي",
+"اللهم نور قلبي بنورك",
+"اللهم اشرح لي صدري",
+"اللهم يسر لي أمري",
+"اللهم احفظني من بين يدي ومن خلفي",
+"اللهم استر عوراتي وآمن روعاتي",
+"اللهم إني أعوذ بك من زوال نعمتك",
+"اللهم إني أعوذ بك من شر نفسي",
+"اللهم إني أعوذ بك من الشيطان الرجيم",
+"بسم الله الذي لا يضر مع اسمه شيء",
+"أعوذ بكلمات الله التامات من شر ما خلق",
+"رضيت بالله ربا وبالإسلام دينا",
+"اللهم بك أصبحنا وبك أمسينا",
+"اللهم ما أصبح بي من نعمة فمنك وحدك",
+"اللهم عافني في بدني",
+"اللهم عافني في سمعي",
+"اللهم عافني في بصري",
+"اللهم إني أصبحت أشهدك",
+"اللهم أنت ربي لا إله إلا أنت",
+"اللهم إني أسألك علما نافعا",
+"اللهم إني أسألك رزقا طيبا",
+"اللهم إني أسألك عملا متقبلا",
+"اللهم اغفر لي ذنبي كله",
+"اللهم نقني من خطاياي",
+"اللهم باعد بيني وبين خطاياي",
+"اللهم اغسلني من خطاياي بالماء والثلج",
+"اللهم اجعل في قلبي نورا",
+"اللهم اجعل في بصري نورا",
+"اللهم اجعل في سمعي نورا",
+"اللهم اجعل من أمامي نورا",
+"اللهم اجعل من خلفي نورا",
+"اللهم اجعل من فوقي نورا",
+"اللهم اجعل من تحتي نورا",
+"اللهم أعطني نورا",
+"اللهم إني أعوذ برضاك من سخطك",
+"اللهم إني أعوذ بمعافاتك من عقوبتك",
+"اللهم إني أعوذ بك منك",
+"اللهم لا أحصي ثناء عليك",
+"اللهم أنت كما أثنيت على نفسك",
+"سبوح قدوس رب الملائكة والروح",
+"اللهم لك ركعت وبك آمنت",
+"اللهم لك سجدت وبك آمنت",
+"سمع الله لمن حمده ربنا ولك الحمد",
+"اللهم ربنا لك الحمد ملء السموات وملء الأرض"
+];
+
+const news=[
+"دراسة: 90% من الجزائريين يديرو لايك قبل ما يتفرجو الفيديو",
+"عاجل: واحد من قالمة دار بث 24/7... الجيران بلغو عليه",
+"كسر: مواطن قالمي وصل 1000 مشترك... دار عرس في الحومة",
+"حصري: دراسة تثبت أن الجزائري يقدر يعيش بلا ماء بصح ما يقدرش يعيش بلا انترنت",
+"عاجل: واحد نسى الباسوورد تاع الفيسبوك... دار حساب جديد ونسى الباسوورد ثاني",
+"كسر: مواطن شاف فيديو 10 ساعات... كي كمل لقاه تكرر 3 مرات",
+"حصري: جزائري اخترع طريقة جديدة للنجاح... يرقد ويحلم بالنجاح",
+"عاجل: واحد دار دايت... نقص 2 كيلو و زاد 5 كيلو فرحة",
+"كسر: مواطن فتح قناة يوتيوب... أول فيديو 'كيفاش نفتح قناة يوتيوب'",
+"حصري: دراسة تؤكد أن 99% من الجزائريين يقولو 'دقيقة ونجي' ويرجعو بعد ساعة",
+"عاجل: واحد شرى تليفون جديد... أول حاجة دارها كسر الشاشة",
+"كسر: مواطن دار بث مباشر وهو راقد... جاب 1000 مشاهد",
+"حصري: جزائري اكتشف أن النت يمشي مليح في 3 تاع الصباح",
+"عاجل: واحد قال لمرتو 'نحبك'... قالت له 'واش خصك؟'",
+"كسر: مواطن دار فيديو تحفيزي... هو الأول اللي محتاج تحفيز",
+"حصري: دراسة تثبت أن الجزائري يشحن تليفونو 5 مرات في النهار",
+"عاجل: واحد دار اشتراك في الجيم... راح مرة وحدة يتصور",
+"كسر: مواطن قالمي دار مشروع... المشروع هو يرقد",
+"حصري: جزائري اخترع منبه يطفي وحدو كي تسمعو",
+"عاجل: واحد شرى كتاب... حطو تحت المخدة باه يقراه في المنام",
+"كسر: مواطن دار تحدي 30 يوم... حبس في اليوم الثاني",
+"حصري: دراسة تؤكد أن الجزائري يفطر على النت قبل الأكل",
+"عاجل: واحد دار باسوورد '123456'... تفاجأ كي هاكاوه",
+"كسر: مواطن شحن تليفونو 100%... فرغ في 10 دقايق",
+"حصري: جزائري اكتشف أن 'جاري التحميل' هي أطول جملة في العالم",
+"عاجل: واحد دار فيديو 'كيفاش تربح المال'... هو يطلب سلف",
+"كسر: مواطن قالمي دار بث من الحمام... قال 'هذا مكتبي'",
+"حصري: دراسة تثبت أن الجزائري يقول 'راني جاي' وهو مازال في الفراش",
+"عاجل: واحد شرى لابتوب للألعاب... يستعملو غير في الفيسبوك",
+"كسر: مواطن دار قناة طبخ... يحرق حتى الماء",
+"حصري: جزائري اخترع تطبيق ينوضك للصلاة... حطو صامت",
+"عاجل: واحد دار كلمة سر قوية... نساها وكتبها في ورقة",
+"كسر: مواطن دار فيديو رياضة... تعب من المونتاج",
+"حصري: دراسة تؤكد أن الجزائري يصور الأكل قبل ما ياكلو",
+"عاجل: واحد شرى ساعة ذكية... يستعملها باه يشوف الوقت برك",
+"كسر: مواطن دار بث مباشر... نسى يشعل الكاميرا",
+"حصري: جزائري اكتشف أن الليل قصير كي تكون في التيك توك",
+"عاجل: واحد دار اشتراك نت غير محدود... كملو في يومين",
+"كسر: مواطن قالمي دار تحدي الماء... شرب قازوز",
+"حصري: دراسة تثبت أن الجزائري يفتح الثلاجة 20 مرة وهو عارف واش كاين",
+"عاجل: واحد دار فيديو 'روتيني الصباحي'... ينوض على 2 تاع العشية",
+"كسر: مواطن شرى كتب تنمية بشرية... حطهم ديكور",
+"حصري: جزائري اخترع طريقة للمذاكرة... يحط الكتاب تحت المخدة",
+"عاجل: واحد دار قناة سفر... ما خرجش من الحومة",
+"كسر: مواطن دار بث وهو ياكل... المشاهدين شبعو وهو مازال",
+"حصري: دراسة تؤكد أن الجزائري يقول '5 دقايق' ويقصد ساعة",
+"عاجل: واحد شرى مايك احترافي... يستعملو باه يغني في الدوش",
+"كسر: مواطن دار فيديو تعليمي... تعلم من التعليقات",
+"حصري: جزائري اكتشف أن الشاحن يطول كي تكون محتاجو",
+"عاجل: واحد دار قناة تقنية... يطفي ويشعل الجهاز",
+"كسر: مواطن قالمي دار بث من السوق... دار إشهار للخضرة",
+"حصري: دراسة تثبت أن الجزائري يحفظ أغاني أكثر من دروسو",
+"عاجل: واحد شرى كاميرا 4K... يصور بيها السيلفي برك",
+"كسر: مواطن دار تحدي بدون هاتف... فشل بعد 5 دقايق",
+"حصري: جزائري اخترع وضع الطيران... باه ما يزعجوش واحد",
+"عاجل: واحد دار فيديو 'كيفاش تصبح مليونير'... من دار الكراء",
+"كسر: مواطن دار بث مباشر في الجنازة... قال 'محتوى حصري'",
+"حصري: دراسة تؤكد أن الجزائري ينوض بكري غير نهار السفر",
+"عاجل: واحد شرى حاسوب قوي... يلعب بيه دودة",
+"كسر: مواطن دار قناة ألعاب... يخسر في المستوى الأول",
+"حصري: جزائري اكتشف أن 'تم الإرسال' مش معناها قرا الرسالة",
+"عاجل: واحد دار فيديو ديني... حط موسيقى في الخلفية",
+"كسر: مواطن قالمي دار بث من العرس... جاب البارود",
+"حصري: دراسة تثبت أن الجزائري يضحك على النكتة بعد 3 أيام",
+"عاجل: واحد شرى درون... طاح في اليوم الأول",
+"كسر: مواطن دار تحدي القراءة... قرا التعليقات برك",
+"حصري: جزائري اخترع نوم القيلولة... يبدا من الصباح",
+"عاجل: واحد دار فيديو 'يوم في حياتي'... 90% منو في الفراش",
+"كسر: مواطن دار بث وهو يرقد... جاب أكثر مشاهدات من وهو نايض",
+"حصري: دراسة تؤكد أن الجزائري يشري كراس جديد كل عام وما يكتبش فيه"
+];
+
+const riddles=[
+{q:"ابن أمك وأبيك وليس بأختك ولا أخيك؟",a:"أنت"},
+{q:"ما هو الشيء الذي كلما زاد نقص؟",a:"العمر"},
+{q:"شيء يمشي بلا رجلين ويبكي بلا عينين؟",a:"السحاب"},
+{q:"ما هو الشيء الذي له أسنان ولا يعض؟",a:"المشط"},
+{q:"شيء إذا أكلته كله تستفيد وإذا أكلت نصفه تموت؟",a:"سمسم"},
+{q:"ما هو الشيء الذي في السماء إذا أضفت له حرف صار في الأرض؟",a:"نجم يصير منجم"},
+{q:"شيء له أوراق وليس نبات، له جلد وليس حيوان؟",a:"الكتاب"},
+{q:"ما هو الشيء الذي يقرصك ولا تراه؟",a:"الجوع"},
+{q:"شيء تحمله ويحملك؟",a:"الحذاء"},
+{q:"ما هو البيت الذي ليس فيه أبواب ولا نوافذ؟",a:"بيت الشعر"},
+{q:"شيء كلما أخذت منه كبر؟",a:"الحفرة"},
+{q:"ما هو الشيء الذي لا يمشي إلا بالضرب؟",a:"المسمار"},
+{q:"شيء يطير بلا جناح ويبكي بلا عيون؟",a:"الغيوم"},
+{q:"ما هو الشيء الذي له عين ولا يرى؟",a:"الإبرة"},
+{q:"شيء إذا وضعته في الثلاجة لا يبرد؟",a:"الفلفل الحار"},
+{q:"ما هو الشيء الذي اسمه على لونه؟",a:"البيض"},
+{q:"شيء موجود في كل بيت ويأكل ولا يشبع؟",a:"النار"},
+{q:"ما هو الشيء الذي يتكلم جميع اللغات؟",a:"الصدى"},
+{q:"شيء له رأس ولا عين له؟",a:"الدبوس"},
+{q:"ما هو الشيء الذي يذهب ولا يرجع؟",a:"الدخان"},
+{q:"شيء نراه في الدقيقة مرتين وفي القرن مرة واحدة؟",a:"حرف القاف"},
+{q:"ما هو الشيء الذي يشبه نصف القمر؟",a:"النصف الآخر"},
+{q:"شيء إذا لمسته صاح؟",a:"الجرس"},
+{q:"ما هو الشيء الذي يمشي ويقف وليس له أرجل؟",a:"الساعة"},
+{q:"شيء تذبحه وتبكي عليه؟",a:"البصل"},
+{q:"ما هو الشيء الذي له أربع أرجل ولا يمشي؟",a:"الكرسي"},
+{q:"شيء يملأ الغرفة ولا يشغل حيز؟",a:"النور"},
+{q:"ما هو الشيء الذي يكتب ولا يقرأ؟",a:"القلم"},
+{q:"شيء إذا دخل الماء ضاع وتشتت؟",a:"السكر"},
+{q:"ما هو الشيء الذي له خمس أصابع بلا لحم ولا عظم؟",a:"القفاز"},
+{q:"شيء إذا شرب مات وإذا أكل عاش؟",a:"النار"},
+{q:"ما هو الشيء الذي يسمع بلا أذن ويتكلم بلا لسان؟",a:"الهاتف"},
+{q:"شيء له رقبة بلا رأس؟",a:"القارورة"},
+{q:"ما هو الشيء الذي يكسو الناس وهو عار؟",a:"الإبرة"},
+{q:"شيء إذا قلبته صار اسم بنت؟",a:"بحر يصير رحب"},
+{q:"ما هو الشيء الذي يولد كل شهر مرة؟",a:"الهلال"},
+{q:"شيء يجري بلا أرجل؟",a:"النهر"},
+{q:"ما هو الشيء الذي له أذن واحدة وخرطوم؟",a:"الإبريق"},
+{q:"شيء يلبس قبعته في رجليه؟",a:"القلم"},
+{q:"ما هو الشيء الذي ينبض بلا قلب؟",a:"الساعة"},
+{q:"شيء تراه في الليل 3 مرات وفي النهار مرة واحدة؟",a:"حرف اللام"},
+{q:"ما هو الشيء الذي يحمل قنطار ولا يحمل مسمار؟",a:"البحر"},
+{q:"شيء إذا غليته جمد؟",a:"البيض"},
+{q:"ما هو الشيء الذي له وجه بلا لسان؟",a:"الساعة"},
+{q:"شيء يخترق الزجاج ولا يكسره؟",a:"الضوء"},
+{q:"ما هو الشيء الذي يمشي على رأسه؟",a:"القلم في يد الكاتب"},
+{q:"شيء له بيت بلا باب؟",a:"الكتاب"},
+{q:"ما هو الشيء الذي تأكل منه ولا تأكله؟",a:"الصحن"},
+{q:"شيء إذا أضفت له الماء مات؟",a:"النار"},
+{q:"ما هو الشيء الذي له 4 عيون و6 أرجل؟",a:"اثنين راكبين على حمار"},
+{q:"شيء يطلع الشجرة بلا روح؟",a:"الظل"},
+{q:"ما هو الشيء الذي ينام ولا يقوم؟",a:"الرماد"},
+{q:"شيء له تاج وليس ملك؟",a:"الديك"},
+{q:"ما هو الشيء الذي يبكي وهو يضحك؟",a:"السحاب يبكي مطر ويضحك برق"},
+{q:"شيء يمشي أمامك ولا تراه؟",a:"المستقبل"},
+{q:"ما هو الشيء الذي في رأسه سبع فتحات؟",a:"الإنسان"},
+{q:"شيء إذا كثر غلا وإذا قل رخص؟",a:"العقل"},
+{q:"ما هو الشيء الذي لا يدخل إلا إذا ضرب على رأسه؟",a:"المسمار"},
+{q:"شيء له أسنان ويأكل ولا يشبع؟",a:"المنشار"},
+{q:"ما هو الشيء الذي يكون أخضر في الأرض وأسود في السوق وأحمر في البيت؟",a:"الشاي"},
+{q:"شيء يطير في النهار ويمشي في الليل؟",a:"الظل"},
+{q:"ما هو الشيء الذي لا يبرد لو وضعته في الثلاجة؟",a:"الفلفل الحار"},
+{q:"شيء إذا حذفت أوله صار عظيم الشأن؟",a:"قمر"},
+{q:"ما هو الشيء الذي له مدينة بلا بيوت؟",a:"الخريطة"},
+{q:"شيء إذا أخذت منه زاد؟",a:"الحفرة"},
+{q:"ما هو الشيء الذي له أنهار بلا ماء؟",a:"الخريطة"},
+{q:"شيء يمشي بلا قدمين ويطير بلا جناحين؟",a:"الصوت"},
+{q:"ما هو الشيء الذي له جبال بلا حجارة؟",a:"الخريطة"},
+{q:"شيء إذا سقط على الأرض لا ينكسر؟",a:"الماء"},
+{q:"ما هو الشيء الذي له مفاتيح بلا أقفال؟",a:"البيانو"}
+];
+
+const motivates=[
+"النجاح مش صدفة، هو نتيجة تعب وصبر واستمرار",
+"ما تستناش الفرصة، اصنعها بيدك",
+"كل يوم فرصة جديدة باه تبدا من جديد",
+"الفشل خطوة للنجاح، ما تحبسهاش",
+"احلم كبير واخدم أكبر",
+"قالمة 24: من حمام دباغ للعالم 💪",
+"ولاد قالمة ما يعرفوش المستحيل 🔥",
+"قالمة تاريخ ومستقبل، وانت جزء منو",
+"من جبال ماونة نوصلو للمليون 📈",
+"قالمة 24: الرجلة والنية",
+"قالمة ماشي غير ولاية، قالمة عقلية 🏆",
+"اخدم اليوم باه تفتخر غدوة",
+"ما تخليش الظروف تحكم فيك، انت احكم فيها",
+"اللي يخاف من الفشل عمرو ما ينجح",
+"كل مشكلة عندها حل، غير انت فتش عليه",
+"ما تقارنش روحك بالناس، قارن روحك بنفسك البارح",
+"الصبر مفتاح الفرج والنجاح",
+"خدمة اليوم راحة غدوة",
+"ما كانش مستحيل، كاين ما حاولتش بزاف",
+"الطريق طويل بصح النتيجة تستاهل",
+"إذا طحت نوض، إذا فشلت عاود",
+"ما تستسلمش، القمة قريبة",
+"كل خطوة صغيرة تقربك من حلمك",
+"النجاح يبدأ من عقلك",
+"خليك إيجابي حتى في أصعب الظروف",
+"ما تخليش كلام الناس يحبطك",
+"انت تقدر، آمن بروحك",
+"الحلم بلا عمل مجرد أمنية",
+"ابدأ الآن، ما تستناش الوقت المناسب",
+"كل يوم عندك 24 ساعة، استغلها",
+"ما تخليش الماضي يحكم في مستقبلك",
+"تعلم من أخطائك وكمل",
+"النجاح رحلة مش وجهة",
+"خليك ثابت على هدفك",
+"ما تخليش الخوف يوقفك",
+"انت أقوى مما تتخيل",
+"كل تحدي فرصة جديدة",
+"العمل الجاد يغلب الموهبة",
+"ما تقولش صعيب، قول ما حاولتش",
+"النجاح للصبورين",
+"خلي فشلك يكون درس مش عذر",
+"ما تستناش التشجيع، شجع روحك",
+"انت البطل في قصة حياتك",
+"كل يوم جديد فرصة جديدة",
+"ما تخليش اليأس يدخل قلبك",
+"الحياة قصيرة، ما تضيعهاش",
+"اخدم بصمت وخلي نجاحك يدير الضجة",
+"ما تقارنش بدايتك بنهاية غيرك",
+"الاستمرارية سر النجاح",
+"ما تخليش الظروف تكون عذرك",
+"انت تصنع مستقبلك بيديك",
+"كل عظيم كان مبتدئ في يوم من الأيام",
+"ما تخافش من البداية الجديدة",
+"النجاح مش للاذكياء برك، للصبورين",
+"خليك مركز على هدفك",
+"ما تخليش الفشل يعرفك",
+"انت تقدر تغير حياتك اليوم",
+"كل يوم تخطو خطوة تقرب للحلم",
+"ما تستناش الظروف المثالية",
+"ابدأ بما عندك من وين راك",
+"النجاح محتاج تضحية",
+"ما تخليش الراحة تسرق أحلامك",
+"انت مسؤول على نجاحك",
+"كل تعب اليوم راحة غدوة",
+"ما تقولش ما نقدرش، قول كيفاش نقدر",
+"النجاح يجي لللي يصر عليه",
+"خليك قوي حتى كي تكون وحدك",
+"ما تخليش كلمة 'مستحيل' في قاموسك",
+"انت تكتب قصتك بيدك",
+"كل يوم هو صفحة جديدة"
+];
+
+function updateClock(){const now=new Date();document.getElementById('clock').textContent=now.toLocaleTimeString('en-GB',{timeZone:'Africa/Algiers',hour12:false})}
+let z=0,n=0,r=0,m=0,t=180,sa=false,riddleInterval=null;
+function rot(){document.getElementById('zekr').innerText=azkar[z%azkar.length];z++;document.getElementById('news').innerText=news[n%news.length];n++;document.getElementById('motivate').innerText=motivates[m%motivates.length];m++}
+function updR(){const c=riddles[r%riddles.length];document.getElementById('riddle').innerText=c.q;document.getElementById('riddleAnswer').style.display='none';document.getElementById('riddleAnswer').innerText='الإجابة: '+c.a;r++;t=180;sa=false}
+function startRiddleTimer(){if(riddleInterval)clearInterval(riddleInterval);riddleInterval=setInterval(()=>{t--;const min=Math.floor(t/60);const sec=t%60;document.getElementById('riddleTimer').innerText=`${min}:${sec.toString().padStart(2,'0')}`;if(t<=0&&!sa){document.getElementById('riddleAnswer').style.display='block';sa=true;setTimeout(()=>{updR();t=180},10000)}},1000)}
+let lastSubs=0,errCount=0;
+
+async function getLiveVideoId(){
+    try{
+        const r=await fetch(`https://www.googleapis.com/youtube/v3/search?part=id&channelId=${CHANNEL_ID}&eventType=live&type=video&key=${API_KEY}`);
+        const d=await r.json();
+        if(d.items&&d.items[0])VIDEO_ID=d.items[0].id.videoId;
+    }catch(e){}
 }
-let z=0,n=0,r=0,m=0,t=180,sa=false;
-let riddleInterval=null;
-function rot(){
-    document.getElementById('zekr').innerText=azkar[z%azkar.length];z++;
-    document.getElementById('news').innerText=news[n%news.length];n++;
-    document.getElementById('motivate').innerText=motivates[m%motivates.length];m++;
-}
-function updR(){
-    const c=riddles[r%riddles.length];
-    document.getElementById('riddle').innerText=c.q;
-    document.getElementById('riddleAnswer').style.display='none';
-    document.getElementById('riddleAnswer').innerText='الإجابة: '+c.a;
-    document.getElementById('riddleCount').innerText=(r%riddles.length)+1;
-    r++;t=180;sa=false;
-}
-function startRiddleTimer(){
-    if(riddleInterval) clearInterval(riddleInterval);
-    riddleInterval = setInterval(()=>{
-        t--;
-        const min=Math.floor(t/60);
-        const sec=t%60;
-        document.getElementById('riddleTimer').innerText=`${min}:${sec.toString().padStart(2,'0')}`;
-        if(t<=0&&!sa){
-            document.getElementById('riddleAnswer').style.display='block';
-            sa=true;
-            setTimeout(()=>{
-                updR();
-                t=180;
-            },10000);
-        }
-    },1000);
-}
-let lastSubs=0;
+
 async function getSubs(){
     try{
         const r=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
+        if(!r.ok)throw new Error('API Error');
         const d=await r.json();
         if(d.items&&d.items[0]){
-            const s=d.items[0].statistics;
-            const sub=parseInt(s.subscriberCount);
-            const v=parseInt(s.viewCount);
-            const g=getNextGoal(sub);
+            const s=d.items[0].statistics;const sub=parseInt(s.subscriberCount);const v=parseInt(s.viewCount);const g=getNextGoal(sub);
             document.getElementById('subs').innerText=sub.toLocaleString('ar-DZ');
             document.getElementById('views').innerText=v.toLocaleString('ar-DZ');
             document.getElementById('goal').innerText=g.toLocaleString('ar-DZ');
@@ -193,47 +411,34 @@ async function getSubs(){
             const p=Math.min((sub/g)*100,100).toFixed(1);
             document.getElementById('progress').style.width=p+'%';
             document.getElementById('progress').innerText=p+'%';
-            if(lastSubs>0){document.getElementById('growth').innerText=((sub-lastSubs)*60).toLocaleString('ar-DZ')+'/ساعة'}
-            lastSubs=sub;
-            document.getElementById('errorBox').style.display='none';
+            if(lastSubs>0)document.getElementById('growth').innerText=((sub-lastSubs)*60).toLocaleString('ar-DZ')+'/ساعة';
+            lastSubs=sub;document.getElementById('errorBox').style.display='none';errCount=0;
         }
     }catch(e){
-        document.getElementById('errorBox').innerHTML='⚠️ فشل الاتصال - تأكد من API_KEY و CHANNEL_ID';
-        document.getElementById('errorBox').style.display='block';
+        errCount++;
+        if(errCount>3){document.getElementById('errorBox').innerHTML='⚠️ فشل الاتصال بـ YouTube API';document.getElementById('errorBox').style.display='block'}
     }
 }
+
 async function getLiveViewers(){
     try{
-        if(VIDEO_ID==='YOUR_LIVE_VIDEO_ID')return;
+        if(!VIDEO_ID)await getLiveVideoId();
+        if(!VIDEO_ID)return;
         const r=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${VIDEO_ID}&key=${API_KEY}`);
         const d=await r.json();
         if(d.items&&d.items[0]?.liveStreamingDetails){
             const v=d.items[0].liveStreamingDetails.concurrentViewers||0;
-            document.getElementById('liveViewers').innerText=parseInt(v).toLocaleString('ar-DZ');
+            document.getElementById('liveViewers').innerText=parseInt(v).toLocaleString('ar-DZ')
         }
     }catch(e){}
 }
-// Force Render للـ Xvfb - هذا هو السر النووي
-document.fonts.ready.then(() => {
-    updateClock();
-    setInterval(updateClock, 1000);
-    getSubs();
-    setInterval(getSubs, 20000);
-    getLiveViewers();
-    setInterval(getLiveViewers, 30000);
-    rot();
-    setInterval(rot, 30000);
-    updR();
-    startRiddleTimer();
 
-    // Force GPU + Repaint بعد 500ms
-    setTimeout(() => {
-        document.body.style.transform = 'translateZ(0)';
-        document.body.style.opacity = '0.99';
-        setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
-    }, 500);
+document.fonts.ready.then(async()=>{
+    await getLiveVideoId(); // نجيب ID البث الحالي
+    updateClock();setInterval(updateClock,1000);
+    getSubs();setInterval(getSubs,30000); // كل 30 ثانية مش 20 باه ما يطيحش API
+    getLiveViewers();setInterval(getLiveViewers,30000);
+    rot();setInterval(rot,30000);updR();startRiddleTimer();
 });
 </script>
 </body>
